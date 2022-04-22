@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&display=swap');
+@font-face {
+    font-family: 'conthraxsemibold';
+    src: url('../fonts/conthrax-sb-webfont.woff2') format('woff2'),
+         url('../fonts/conthrax-sb-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.login {
+    background-image: url("../assets/backgroundcvm.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Archivo, sans-serif;
+}
+
+.logo-container {
+    width: 620px;
+    height: 175px;
+    background-image: url(../assets/comercializacion-logo.png);
+    background-size: contain;
+}
+
+.login-container-form {
+    margin-top: -70px;
+    height: 600px;
+    width: 700px;
+    background-image: url("../assets/border-container-form.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-text {
+    font-family: conthraxsemibold;
+    margin-right: 115px;
+    margin-bottom: 10px;
+}
+
+.login-input-background {
+    margin-left: 20px;
+    background-image: url("../assets/border-input.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 600px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.login-input-background input {
+    margin-top: 8px;
+    width: 85%;
+    height: 70%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 24px;
+}
+.login-input-background input::placeholder {
+    color: white;
+    font-size: 24px;
+}
+#forgot-password-text {
+    font-family: conthraxsemibold;
+    margin-top: -15px;
+    margin-left: 165px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+#forgot-password-text a {
+    text-decoration: none;
+    color: #f2c627;
+}
+.login-btn {
+    background-color: #1b533d;
+    outline: none;
+    border: 0;
+    width: 500px;
+    height: 65px;
+    margin-top: 15px;
+    color: white;
+    font-size: 20px;
+    border-radius: 25px 0px;;
+}

@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import "../styles/UserLogin.css"
 
 const URI = "http://localhost:8000/comapp/";
 
-const ComLogin = () => {
+const UserLogin = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
 
@@ -33,6 +33,11 @@ const ComLogin = () => {
             <a href="/">¿Olvidaste tu contraseña?</a>
           </h2>
         </div>
+        <div className="newregister-text-container">
+          <h2 id="newregister-text">
+            <a href="/">¿No posees una cuenta? Regístrate</a>
+          </h2>
+        </div>
         <button className="login-btn" type="submit">
           INICIAR SESIÓN
         </button>
@@ -41,4 +46,4 @@ const ComLogin = () => {
   );
 };
 
-export default ComLogin;
+export default UserLogin;

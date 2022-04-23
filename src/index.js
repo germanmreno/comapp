@@ -3,13 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./styles/styles.css";
 import reportWebVitals from "./reportWebVitals";
-import ComLogin from "./components/ComLogin";
+import UserLogin from "./components/UserLogin";
+import UserRegister from "./components/UserRegister";
+import { ComRegister } from "./components/ComRegister";
+import { ChakraProvider } from '@chakra-ui/react'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <ComLogin />
-  </React.StrictMode>
+ 
+<ChakraProvider>
+<ComRegister />
+</ChakraProvider>
+    
 );
 
 // If you want to start measuring performance in your app, pass a function

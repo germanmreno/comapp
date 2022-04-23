@@ -1,0 +1,98 @@
+.register {
+    background-image: url("../assets/backgroundcvm.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Archivo, sans-serif;
+}
+
+.logo-register-container {
+    width: 500px;
+    height: 150px;
+    background-image: url(../assets/comercializacion-logo.png);
+    background-size: contain;
+}
+
+.register-container-form {
+    height: 700px;
+    width: 705px;
+    border: 2px solid #f7cd00;
+    border-radius: 50px 0px;
+    /* background-image: url(
+"../assets/border-container-form.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#register-text {
+    font-family: conthraxsemibold;
+    margin-right: 390px;
+    margin-bottom: 10px;
+}
+
+.register-input-background {
+    margin-left: 20px;
+    /* background-image: url("../assets/border-input.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+    border: 2px solid #f7cd00;
+    border-radius: 25px 0px;
+    width: 600px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.register-input-background input {
+    margin-top: 8px;
+    width: 85%;
+    height: 70%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 24px;
+}
+.register-input-background input::placeholder {
+    color: white;
+    font-size: 24px;
+}
+#gologin-text {
+    font-family: conthraxsemibold;
+    margin-top: -15px;
+    margin-left: 125px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+#gologin-text a {
+    font-size: 21px;
+    text-decoration: none;
+    color: #f2c627;
+}
+
+.register-btn {
+    background-color: #1b533d;
+    outline: none;
+    border: 0;
+    width: 600px;
+    height: 70px;
+    margin-top: 15px;
+    color: white;
+    font-size: 20px;
+    border-radius: 25px 0px;
+}

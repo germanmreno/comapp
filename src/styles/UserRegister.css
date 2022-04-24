@@ -40,6 +40,7 @@
     font-family: conthraxsemibold;
     margin-right: 390px;
     margin-bottom: 10px;
+    font-size: 24px;
 }
 
 .register-input-background {
@@ -78,6 +79,7 @@
     margin-left: 125px;
     margin-bottom: 10px;
     width: 100%;
+    font-size: 24px;
 }
 #gologin-text a {
     font-size: 21px;

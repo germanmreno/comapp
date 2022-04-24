@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import "../styles/UserRegister.css"
@@ -42,7 +43,7 @@ const UserRegister = () => {
         </div>
         <div className="gologin-text-container">
           <h2 id="gologin-text">
-            <a href="/">¿Posees ya una cuenta? Inicia sesión</a>
+            <Link to="/login">¿Posees ya una cuenta? Inicia sesión</Link>
           </h2>
         </div>
         <button className="register-btn" type="submit">

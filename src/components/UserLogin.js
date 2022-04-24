@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/UserLogin.css"
 
 const URI = "http://localhost:8000/comapp/";
@@ -35,11 +36,11 @@ const UserLogin = () => {
         </div>
         <div className="newregister-text-container">
           <h2 id="newregister-text">
-            <a href="/">¿No posees una cuenta? Regístrate</a>
+            <Link to="/register">¿No posees una cuenta? Regístrate</Link>
           </h2>
         </div>
         <button className="login-btn" type="submit">
-          INICIAR SESIÓN
+          <Link to="/comregister">INICIAR SESIÓN</Link>
         </button>
       </div>
     </div>

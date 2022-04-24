@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import venezuela from "venezuela";
 
-export const ComRegister = () => {
+const ComRegister = () => {
   const ve = venezuela;
   const { pais: estado } = ve;
 
@@ -55,18 +55,18 @@ export const ComRegister = () => {
 
   return (
       <Box display="flex" flexDirection="row" >
-        <Box h="100vh" w="65%" backgroundImage="https://i.imgur.com/z7Jdqsa.png" bgPosition="center"
-        bgSize="cover">
+        <Box h="100vh" w="65%" backgroundImage="https://i.imgur.com/DYE4aEq.png" bgPosition="center"
+        bgSize="contain">
         </Box>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={4} direction={"row"} p={3} flex="1" alignItems="center" justifyContent="Center">
+        <Stack mt={-2} spacing={4} direction={"row"} p={3} flex="1" alignItems="center" justifyContent="Center">
             <Image
   htmlWidth="275px"
   src='https://i.imgur.com/l38qzdD.png'
   alt='Comercialización CVM'
 />
 </Stack>
-            <Box m={4}>
+            <Box m={4} mt={-6}>
             <Heading as="h3" size="md" mb={4} isTruncated>
             Datos de la Empresa
             </Heading>
@@ -266,3 +266,5 @@ export const ComRegister = () => {
       
   );
 };
+
+export default ComRegister;

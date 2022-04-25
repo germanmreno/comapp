@@ -36,7 +36,10 @@ const ComApp = () => {
   } else {
     return (
       <div>
-        <div className="header-app"></div>
+        <div className="header-app">
+          <div className="home-logogobierno-container"></div>
+          <div className="home-logo-container"></div>
+        </div>
         <div className="app-background"></div>
       </div>
     );

@@ -7,9 +7,9 @@
     display: flex;
     flex-direction: row;
     position: absolute;
-    background-image: url("../assets/cintillo-header.png");
+    /* background-image: url("../assets/cintillo-header.png");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     border-bottom: 3px solid black;;
 }
 
@@ -30,8 +30,16 @@
     font-family: Archivo, sans-serif;
 }
 
-.logo-app-container {
+.home-logo-container {
     width: 350px;
     background-image: url(../assets/comercializacion-logo.png);
     background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.home-logogobierno-container {
+    width: 140px;
+    background-image: url(../assets/logo-gobierno.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }

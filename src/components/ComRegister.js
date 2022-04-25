@@ -59,8 +59,7 @@ const ComRegister = () => {
       <Box
         h="auto"
         w="50%"
-        backgroundImage="https://i.imgur.com/DYE4aEq.png"
-        bgPosition="right"
+        backgroundImage="https://i.imgur.com/X5w7nmt.png"
         backgroundRepeat="no-repeat"
         bgSize="cover"
       ></Box>
@@ -285,18 +284,26 @@ const ComRegister = () => {
 
         <Box
           m={4}
-          spacing={4}
           display="flex"
           flex-direction="row"
           alignItems="center"
           justifyContent="center"
         >
-          <Button colorScheme="green" variant="solid" type="submit">
-            Enviar
-          </Button>
-          <Button colorScheme="red" variant="solid" type="submit">
-            <Link to="/home">Atrás</Link>
-          </Button>
+          <Stack
+            spacing={4}
+            direction={"row"}
+            p={3}
+            flex="1"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Button colorScheme="green" variant="solid" type="submit">
+              <Link to="/confirmregister">Enviar</Link>
+            </Button>
+            <Button colorScheme="red" variant="solid" type="submit">
+              <Link to="/home">Atrás</Link>
+            </Button>
+          </Stack>
         </Box>
       </form>
     </Box>

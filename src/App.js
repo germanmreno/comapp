@@ -11,10 +11,22 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<ComApp />} />
-        <Route path="/login" element={<UserLogin />} />
-        <Route path="/register" element={<UserRegister />} />
-        <Route path="/home" element={<ComHome />} />
-        <Route path="/comregister" element={<ComRegister />} />
+        <Route
+          path="https://comercializacioncvmprueba.netlify.app/login"
+          element={<UserLogin />}
+        />
+        <Route
+          path="https://comercializacioncvmprueba.netlify.app/register"
+          element={<UserRegister />}
+        />
+        <Route
+          path="https://comercializacioncvmprueba.netlify.app/home"
+          element={<ComHome />}
+        />
+        <Route
+          path="https://comercializacioncvmprueba.netlify.app/comregister"
+          element={<ComRegister />}
+        />
       </Routes>
     </BrowserRouter>
   );

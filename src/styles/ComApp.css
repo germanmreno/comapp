@@ -1,19 +1,15 @@
+* {
+    font-family: Archivo, sans-serif;
+}
+
 .header-app {
-    height: 80px;
+    height: 100px;
     width: 100%;
     background: black;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: row;
-<<<<<<< HEAD
-=======
-    position: absolute;
-    /* background-image: url("../assets/cintillo-header.png");
-    background-size: cover;
-    background-repeat: no-repeat; */
-    border-bottom: 3px solid black;;
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
 }
 
 .app-background {
@@ -24,7 +20,7 @@
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,23 +29,14 @@
     font-family: Archivo, sans-serif;
 }
 
-<<<<<<< HEAD
+.gobierno-logo-container {
+    width: 125px;
+    background-image: url(../assets/logo-gobierno.png);
+    background-size: cover;
+}
+
 .logo-app-container {
     width: 350px;
     background-image: url(../assets/comercializacion-logo.png);
     background-size: cover;
-=======
-.home-logo-container {
-    width: 350px;
-    background-image: url(../assets/comercializacion-logo.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.home-logogobierno-container {
-    width: 140px;
-    background-image: url(../assets/logo-gobierno.png);
-    background-size: cover;
-    background-repeat: no-repeat;
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
 }

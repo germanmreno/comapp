@@ -36,9 +36,8 @@ const ComHome = () => {
             src="https://i.imgur.com/61iZxXu.png"
             alt="Comercialización CVM"
           />
-          <Button colorScheme="green" variant="solid">
-            <Link to="/comregister">Registrar empresa</Link>
-          </Button>
+          <Link to="/comregister"><Image src="https://i.imgur.com/R7uehhJ.png" width="250px">
+          </Image></Link>
         </Stack>
       </Box>
     </Box>

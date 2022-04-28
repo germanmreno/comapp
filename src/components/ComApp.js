@@ -1,14 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
 import "../styles/UserLogin.css"
 import Loading from "./Loading";
 import "../styles/ComApp.css"
-=======
-import "../styles/UserLogin.css";
-import Loading from "./Loading";
-import "../styles/ComApp.css";
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
+import { Box, Heading, Image, Stack } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const URI = "http://localhost:8000/comapp/";
 
@@ -30,37 +26,41 @@ const ComApp = () => {
   const changeState = () => {
     setTimeout(() => {
       setLoading(false);
-<<<<<<< HEAD
     }, 3000)
   }
-=======
-    }, 3000);
-  };
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
 
   useEffect(() => {
     changeState();
   }, []);
 
-<<<<<<< HEAD
 
   if(loading) {
     return (
       <Loading />
     )
-=======
-  if (loading) {
-    return <Loading />;
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
   } else {
     return (
       <div>
         <div className="header-app">
-<<<<<<< HEAD
+          <div className="gobierno-logo-container"></div>
           <div className="logo-app-container"></div>
         </div>
-        <div className="app-background">
-        </div>
+        <Box className="app-background" position="relative">
+          <Box h="100px" position="absolute" top="10px" display="flex" width="100%">
+            <Stack spacing={1} direction={"row"} p={2} flex="1" justify="flex-end" width="100%">
+              <Link to="/"><Image src='https://i.imgur.com/GKDwIhR.png' height="80px" /></Link>
+              <Link to="/"><Image src='https://i.imgur.com/8NAKakM.png' height="80px" /></Link>
+              <Link to="/"><Image src='https://i.imgur.com/ruTDdtu.png' height="80px" /></Link>
+              <Link to="/"><Image src='https://i.imgur.com/LBmBrKC.png' height="80px" /></Link>
+            </Stack>
+          </Box>
+          <Box display="flex" width="100%" mt="-160px" mb="0" flex-direction="column">
+            <Image src="https://i.imgur.com/Iyg74x0.png" width="800px" justify="flex-start"/>
+          </Box>
+          <Box display="flex" width="100%" mt="0">
+            <Heading ml="300px" color="#fcd72b">Registro Nacional de <br/> Compradores y Vendedores de <br/> Minerales</Heading>
+          </Box>
+        </Box>
       </div>
       );
   }
@@ -68,15 +68,3 @@ const ComApp = () => {
 };
 
 export default ComApp;
-=======
-          <div className="home-logogobierno-container"></div>
-          <div className="home-logo-container"></div>
-        </div>
-        <div className="app-background"></div>
-      </div>
-    );
-  }
-};
-
-export default ComApp;
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8

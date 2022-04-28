@@ -1,11 +1,8 @@
+import { Box, Image, Stack } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-<<<<<<< HEAD
+import { Link, NavLink } from "react-router-dom";
 import "../styles/UserLogin.css"
-=======
-import "../styles/UserLogin.css";
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
 
 const URI = "http://localhost:8000/comapp/";
 
@@ -24,8 +21,21 @@ const UserLogin = () => {
 
   return (
     <div className="login">
-      <div className="logo-container"></div>
-      <div className="login-container-form">
+        <Box className="header-app" position="fixed" top="0">
+          <div className="gobierno-logo-container"></div>
+          <div className="logo-app-container"></div>
+          <Box h="100px" position="absolute" display="flex" width="100%">
+            <Stack spacing={1} direction={"row"} p={2} flex="1" justify="flex-end" width="100%">
+              <Link to="/"><Image src='https://i.imgur.com/GKDwIhR.png' height="80px" /></Link>
+              <Link to="/"><Image src='https://i.imgur.com/8NAKakM.png' height="80px" /></Link>
+              <Link to="/"><Image src='https://i.imgur.com/ruTDdtu.png' height="80px" /></Link>
+              <Link to="/"><Image src='https://i.imgur.com/LBmBrKC.png' height="80px" /></Link>
+            </Stack>
+          </Box>
+        </Box>
+
+      <Box className="logo-container" mt="60px"></Box>
+      <Box className="login-container-form">
         <h2 id="login-text">Inicia sesión con tu cuenta</h2>
         <div className="login-input-background">
           <input placeholder="Correo electrónico"></input>
@@ -44,13 +54,9 @@ const UserLogin = () => {
           </h2>
         </div>
         <button className="login-btn" type="submit">
-<<<<<<< HEAD
           <Link to="/comregister">INICIAR SESIÓN</Link>
-=======
-          <Link to="/home">INICIAR SESIÓN</Link>
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
         </button>
-      </div>
+      </Box>
     </div>
   );
 };

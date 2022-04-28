@@ -15,10 +15,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.30.0",
-<<<<<<< HEAD
-=======
     "react-icons": "^4.3.1",
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "reactstrap": "^9.0.2",

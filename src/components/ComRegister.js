@@ -15,10 +15,7 @@ import {
   Select,
 } from "@chakra-ui/react";
 import venezuela from "venezuela";
-<<<<<<< HEAD
-=======
 import { Link } from "react-router-dom";
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
 
 const ComRegister = () => {
   const ve = venezuela;
@@ -58,65 +55,6 @@ const ComRegister = () => {
   };
 
   return (
-<<<<<<< HEAD
-      <Box display="flex" flexDirection="row" >
-        <Box h="100vh" w="65%" backgroundImage="https://i.imgur.com/DYE4aEq.png" bgPosition="center"
-        bgSize="contain">
-        </Box>
-        <form onSubmit={handleSubmit(onSubmit)}>
-        <Stack mt={-2} spacing={4} direction={"row"} p={3} flex="1" alignItems="center" justifyContent="Center">
-            <Image
-  htmlWidth="275px"
-  src='https://i.imgur.com/l38qzdD.png'
-  alt='Comercialización CVM'
-/>
-</Stack>
-            <Box m={4} mt={-6}>
-            <Heading as="h3" size="md" mb={4} isTruncated>
-            Datos de la Empresa
-            </Heading>
-<Stack spacing={4} direction={"row"} p={3} flex="1">
-            <Input
-                placeholder="Nombre de la Empresa"
-                id="empresa"
-                name="empresa"
-                size="md"
-                boxShadow="xs"
-                {...register("nombre")}
-            />
-            <Input
-                placeholder="RIF"
-                size="md"
-                id="rif"
-                name="rif"
-                boxShadow="xs"
-                {...register("rif")}
-            />
-            </Stack>
-            <Stack spacing={4} direction={"row"} p={3} flex="1">
-            <Input
-                placeholder="Número de alianza"
-                id="numalianza"
-                name="numalianza"
-                size="md"
-                boxShadow="xs"
-                {...register("numalianza")}
-            />
-            <Input
-                placeholder="Dirección fiscal"
-                id="dirfiscal"
-                name="dirfiscal"
-                size="md"
-                boxShadow="xs"
-                {...register("dirfiscal")}
-            />
-            </Stack>
-
-            <Stack spacing={4} direction={"column"} p={3} flex="1">
-            <Select
-                {...register("estado")}
-                onChange={(e) => {
-=======
     <Box display="flex" flexDirection="row">
       <Box
         h="auto"
@@ -186,166 +124,10 @@ const ComRegister = () => {
             <Select
               {...register("estado")}
               onChange={(e) => {
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
                 setTown("");
                 setParish("");
                 setState(e.target.value);
                 setTown("");
-<<<<<<< HEAD
-                }}
-            >
-                <option value="">Elige un estado</option>
-                {estado.map((el) => (
-                <option key={el.id_estado} value={el.estado}>
-                    {el.estado}
-                </option>
-                ))}
-            </Select>
-            </Stack>
-            <Stack spacing={4} direction={"row"} p={3} flex="1">
-            {state && (
-                <Select
-                {...register("municipio")}
-                onChange={(e) => {
-                    setParish("");
-                    setTown(e.target.value);
-                }}
-                >
-                <option value="">Elige un municipio</option>
-                {municipios.map((el, index) => (
-                    <option key={index} value={el}>
-                    {el}
-                    </option>
-                ))}
-                </Select>
-            )}
-            {town && (
-                <Select
-                {...register("parroquia")}
-                onChange={(e) => {
-                    setParish(e.target.value || "");
-                }}
-                >
-                <option value="">Elige una parroquia</option>
-                {parroquia.map((el, index) => (
-                    <option key={index} value={el}>
-                    {el}
-                    </option>
-                ))}
-                </Select>
-            )}
-            </Stack>
-        </Box>
-
-        <Box m={4}>
-            <Heading as="h3" size="md" mb={4} isTruncated>
-            Datos del Representante
-            </Heading>
-            <Stack spacing={4} direction={"row"} p={3} flex="1">
-            <Input
-                placeholder="Representante"
-                size="md"
-                boxShadow="xs"
-                {...register("representante")}
-            />
-            <Input
-                placeholder="Número de teléfono"
-                size="md"
-                boxShadow="xs"
-                {...register("rnumtelefono")}
-            />
-            </Stack>
-            <Stack spacing={4} direction={"row"} p={3} flex="1">
-            <Input
-                placeholder="Email"
-                size="md"
-                boxShadow="xs"
-                {...register("rcorreo")}
-            />
-            <Input
-                placeholder="Número de cédula"
-                size="md"
-                boxShadow="xs"
-                {...register("rcedula")}
-            />
-            <Input
-                placeholder="RUM"
-                size="md"
-                boxShadow="xs"
-                {...register("rrum")}
-            />
-            </Stack>
-        </Box>
-
-        <Box m={4}>
-            <Heading as="h3" size="md" mb={4} isTruncated>
-            Tipo de Actividad
-            </Heading>
-            <RadioGroup onChange={setActValue} value={actValue}>
-            <Stack spacing={4} direction={"column"} p={3} flex="1">
-                <Radio {...register("actividad")} value="compra">
-                Compra/Venta
-                </Radio>
-            </Stack>
-            </RadioGroup>
-        </Box>
-
-        <Box m={4}>
-            <Heading as="h3" size="md" mb={4} isTruncated>
-            Actividad Minera
-            </Heading>
-            <Stack spacing={4} direction={"row"} p={3} flex="1">
-            <Checkbox {...register("activmin")} value="oro" colorScheme={"green"}>
-                Oro
-            </Checkbox>
-            <Checkbox
-                {...register("activmin")}
-                value="diamante"
-                colorScheme={"green"}
-            >
-                Diamante
-            </Checkbox>
-            <Checkbox
-                {...register("activmin")}
-                value="coltan"
-                colorScheme={"green"}
-            >
-                Coltán
-            </Checkbox>
-            <Checkbox
-                {...register("activmin")}
-                value="plata"
-                colorScheme={"green"}
-            >
-                Plata
-            </Checkbox>
-            <Checkbox
-                {...register("activmin")}
-                value="calsiterita"
-                colorScheme={"green"}
-            >
-                Casiterita
-            </Checkbox>
-            </Stack>
-            <Textarea
-            {...register("descactivmin")}
-            placeholder="Breve descripción de su actividad minera"
-            />
-        </Box>
-
-        <Box m={4}>
-            <Button colorScheme="green" variant="solid" type="submit">
-            Enviar
-            </Button>
-        </Box>
-        </form>
-      </Box>
-      
-  );
-};
-
-export default ComRegister;
-=======
               }}
             >
               <option value="">Elige un estado</option>
@@ -529,4 +311,3 @@ export default ComRegister;
 };
 
 export default ComRegister;
->>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8

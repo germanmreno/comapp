@@ -1,7 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import "../styles/UserLogin.css"
+=======
+import "../styles/UserLogin.css";
+>>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
 
 const URI = "http://localhost:8000/comapp/";
 
@@ -40,7 +44,11 @@ const UserLogin = () => {
           </h2>
         </div>
         <button className="login-btn" type="submit">
+<<<<<<< HEAD
           <Link to="/comregister">INICIAR SESIÓN</Link>
+=======
+          <Link to="/home">INICIAR SESIÓN</Link>
+>>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
         </button>
       </div>
     </div>

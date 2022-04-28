@@ -91,8 +91,13 @@
     background-color: #1b533d;
     outline: none;
     border: 0;
+<<<<<<< HEAD
     width: 600px;
     height: 70px;
+=======
+    width: 400px;
+    height: 40px;
+>>>>>>> 390b36cf56fba69abf58295852639b4c9cf94ad8
     margin-top: 15px;
     color: white;
     font-size: 20px;

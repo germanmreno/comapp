@@ -1,0 +1,6 @@
+.home-logo-container {
+    width: 620px;
+    height: 175px;
+    background-image: url(../assets/comercializacion-logo.png);
+    background-size: contain;
+}

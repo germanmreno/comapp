@@ -6,6 +6,19 @@ import { Link } from "react-router-dom";
 
 const ComHomeAuth = () => {
   return (
+    <>
+    <Box className="header-app" position="fixed" top="0">
+          <div className="gobierno-logo-container"></div>
+          <div className="logo-app-container"></div>
+          <Box h="100px" position="absolute" display="flex" width="100%">
+            <Stack spacing={1} direction={"row"} p={2} flex="1" justify="flex-end" width="100%">
+              <Link to="/"><Image src='https://i.imgur.com/GKDwIhR.png' height="80px" /></Link>
+              <Link to="/"><Image src='https://i.imgur.com/8NAKakM.png' height="80px" /></Link>
+              <Link to="/"><Image src='https://i.imgur.com/ruTDdtu.png' height="80px" /></Link>
+              <Link to="/"><Image src='https://i.imgur.com/LBmBrKC.png' height="80px" /></Link>
+            </Stack>
+          </Box>
+        </Box>
     <Box display="flex" flexDirection="row">
       <Box
         h="100vh"
@@ -31,16 +44,20 @@ const ComHomeAuth = () => {
           alignItems="center"
           justifyContent="Center"
         >
-          <Image
-            htmlWidth="275px"
-            src="https://i.imgur.com/61iZxXu.png"
-            alt="Comercialización CVM"
-          />
-          <Link to="/comregister"><Image src="https://i.imgur.com/R7uehhJ.png" width="250px">
+          <Link to="/comregister"><Image src="https://i.imgur.com/bS7KIPb.png" width="300px">
+          </Image></Link>
+          <Link to="/comregister"><Image src="https://i.imgur.com/67q3YFP.png" width="300px">
+          </Image></Link>
+          <Link to="/comregister"><Image src="https://i.imgur.com/MR22FOG.png" width="300px">
+          </Image></Link>
+          <Link to="/comregister"><Image src="https://i.imgur.com/0biuOBJ.png" width="300px">
+          </Image></Link>
+          <Link to="/comregister"><Image src="https://i.imgur.com/c9S0w8m.png" width="300px">
           </Image></Link>
         </Stack>
       </Box>
     </Box>
+    </>
   );
 };
 

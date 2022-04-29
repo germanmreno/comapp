@@ -3,8 +3,9 @@ import "../styles/ActivRegister.css";
 
 import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import DownloadLink from "react-download-link";
 
-const ActivRegister = () => {
+const AnalisisRegister = () => {
   return (
     <>
       <Box className="header-app" position="fixed" top="0">
@@ -61,10 +62,10 @@ const ActivRegister = () => {
               mt="130px"
             >
               REGISTRO DE ACTIVIDAD COMERCIAL <br />
-              (COMPRA - VENTA) <br />
+              (ANÁLISIS) <br />
               MENSUAL
             </Heading>
-            <Image src="https://i.imgur.com/KEK4IhB.png" mt="30px" />
+            <Image src="https://i.imgur.com/JugBSxt.png" mt="30px" />
             <Stack
               mt={-2}
               spacing={2}
@@ -74,9 +75,9 @@ const ActivRegister = () => {
               align="center"
             >
               <Image src="https://i.imgur.com/SVrAvJi.png" width="50px" />
-              <a href="../assets/registrodeactividad.xlsx" download>
+              <a href="../assets/registroanalisis.xlsx" download>
                 <Text color="green">
-                  REGISTRO DE ACTIVIDAD COMERCIAL (COMPRA Y VENTA) MENSUAL
+                  REGISTRO DE ACTIVIDAD COMERCIAL (ANÁLISIS) MENSUAL
                 </Text>
               </a>
             </Stack>
@@ -95,14 +96,6 @@ const ActivRegister = () => {
               alignItems="center"
               justifyContent="center"
             >
-              <Link to="/homeauth">
-                <Image
-                  src="https://i.imgur.com/R3DQi40.png"
-                  width="150px"
-                  cursor="pointer"
-                />
-              </Link>
-
               <Image
                 src="https://i.imgur.com/Ss8MqbE.png"
                 width="150px"
@@ -122,4 +115,4 @@ const ActivRegister = () => {
   );
 };
 
-export default ActivRegister;
+export default AnalisisRegister;

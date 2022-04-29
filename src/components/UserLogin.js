@@ -2,7 +2,7 @@ import { Box, Image, Stack } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import "../styles/UserLogin.css"
+import "../styles/UserLogin.css";
 
 const URI = "http://localhost:8000/comapp/";
 
@@ -21,18 +21,33 @@ const UserLogin = () => {
 
   return (
     <div className="login">
-        <Box className="header-app" position="fixed" top="0">
-          <div className="gobierno-logo-container"></div>
-          <div className="logo-app-container"></div>
-          <Box h="100px" position="absolute" display="flex" width="100%">
-            <Stack spacing={1} direction={"row"} p={2} flex="1" justify="flex-end" width="100%">
-              <Link to="/"><Image src='https://i.imgur.com/GKDwIhR.png' height="80px" /></Link>
-              <Link to="/"><Image src='https://i.imgur.com/8NAKakM.png' height="80px" /></Link>
-              <Link to="/"><Image src='https://i.imgur.com/ruTDdtu.png' height="80px" /></Link>
-              <Link to="/"><Image src='https://i.imgur.com/LBmBrKC.png' height="80px" /></Link>
-            </Stack>
-          </Box>
+      <Box className="header-app" position="fixed" top="0">
+        <div className="gobierno-logo-container"></div>
+        <div className="logo-app-container"></div>
+        <Box h="100px" position="absolute" display="flex" width="100%">
+          <Stack
+            spacing={1}
+            direction={"row"}
+            p={2}
+            flex="1"
+            justify="flex-end"
+            width="100%"
+          >
+            <Link to="/home">
+              <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+            </Link>
+            <Link to="/register">
+              <Image src="https://i.imgur.com/8NAKakM.png" height="80px" />
+            </Link>
+            <Link to="/contact">
+              <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+            </Link>
+            <Link to="/help">
+              <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+            </Link>
+          </Stack>
         </Box>
+      </Box>
 
       <Box className="logo-container" mt="60px"></Box>
       <Box className="login-container-form">
@@ -54,7 +69,7 @@ const UserLogin = () => {
           </h2>
         </div>
         <button className="login-btn" type="submit">
-          <Link to="/comregister">INICIAR SESIÓN</Link>
+          <Link to="/home">INICIAR SESIÓN</Link>
         </button>
       </Box>
     </div>

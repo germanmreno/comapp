@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { AiOutlineWallet } from "react-icons";
+import React from "react";
 
-import { Box, Button, Image, Stack } from "@chakra-ui/react";
+import { Box, Heading, Image, Stack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-const ComHome = () => {
+const Help = () => {
   return (
     <>
       <Box className="header-app" position="fixed" top="0">
@@ -19,8 +18,11 @@ const ComHome = () => {
             justify="flex-end"
             width="100%"
           >
-            <Link to="/home">
+            <Link to="/">
               <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+            </Link>
+            <Link to="/register">
+              <Image src="https://i.imgur.com/8NAKakM.png" height="80px" />
             </Link>
             <Link to="/contact">
               <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
@@ -33,8 +35,8 @@ const ComHome = () => {
       </Box>
       <Box display="flex" flexDirection="row">
         <Box
-          h="100vh"
-          w="50%"
+          h="auto"
+          w="100%"
           backgroundImage="https://i.imgur.com/DYE4aEq.png"
           bgPosition="right"
           backgroundRepeat="no-repeat"
@@ -43,47 +45,23 @@ const ComHome = () => {
           <Box
             display="flex"
             width="100%"
-            height="600px"
-            mb="0"
             flex-direction="column"
-            justifyContent="flex-start"
+            justifyContent="center"
             alignItems="center"
+            mt="150px"
           >
-            <Image src="https://i.imgur.com/Iyg74x0.png" width="400px" />
+            <Image src="https://i.imgur.com/dsthvOM.png" width="1400px" />
           </Box>
-        </Box>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          w="50%"
-          flexDirection="column"
-        >
-          <Stack
-            mt={-2}
-            spacing={4}
-            direction={"column"}
-            p={3}
-            flex="1"
+          <Box
+            display="flex"
+            flex-direction="row"
             alignItems="center"
-            justifyContent="Center"
-          >
-            <Image
-              htmlWidth="275px"
-              src="https://i.imgur.com/61iZxXu.png"
-              alt="Comercialización CVM"
-            />
-            <Link to="/comregister">
-              <Image
-                src="https://i.imgur.com/R7uehhJ.png"
-                width="250px"
-              ></Image>
-            </Link>
-          </Stack>
+            justifyContent="center"
+          ></Box>
         </Box>
       </Box>
     </>
   );
 };
 
-export default ComHome;
+export default Help;

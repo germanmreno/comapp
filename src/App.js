@@ -7,7 +7,7 @@ import UserLogin from "./components/UserLogin";
 import ConfirmRegister from "./components/ConfirmRegister";
 import ComHome from "./components/ComHome";
 import ActivRegister from "./components/ActivRegister";
-
+import ComHomeAuth from "./components/ComHomeAuth";
 
 function App() {
     return (
@@ -20,6 +20,7 @@ function App() {
         <Route path="/comregister" element={<ComRegister />} />
         <Route path="/confirmregister" element={<ConfirmRegister />} />
         <Route path="/activregister" element={<ActivRegister />} />
+        <Route path="/homeauth" element={<ComHomeAuth />} />
         </Routes>
       </BrowserRouter>
     );

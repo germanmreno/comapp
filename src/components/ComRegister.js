@@ -8,67 +8,150 @@ import {
   Checkbox,
   Image,
   Radio,
-  RadioGroup,
   Stack,
   Input,
   Heading,
   Select,
   Text,
+  CheckboxGroup,
 } from "@chakra-ui/react";
 import venezuela from "venezuela";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const URI = "http://localhost:8000/comapp/companyregister";
 
 const ComRegister = () => {
+  const { register, handleSubmit } = useForm();
+  const onSubmit = async (data) => {
+    const {
+      nombre,
+      rif,
+      numalianza,
+      direccionfiscal,
+      estado,
+      municipio,
+      parroquia,
+      representante,
+      telefonorepresentante,
+      correorepresentante,
+      cedularepresentante,
+      rumrepresentante,
+      tipoactividad,
+      actividadminera,
+      descripcionactminera,
+      nombreencargado,
+      cedulaencargado,
+      numempleados,
+      nombreempleados,
+      cedulaempleados,
+      cargoempleados,
+      medidacomercio,
+      inventario,
+      promediooro,
+      promedioganancia,
+      porcentajecompra,
+    } = data;
+    console.log(
+      nombre,
+      rif,
+      numalianza,
+      direccionfiscal,
+      estado,
+      municipio,
+      parroquia,
+      representante,
+      telefonorepresentante,
+      correorepresentante,
+      cedularepresentante,
+      rumrepresentante,
+      tipoactividad,
+      actividadminera,
+      descripcionactminera,
+      nombreencargado,
+      cedulaencargado,
+      numempleados,
+      nombreempleados,
+      cedulaempleados,
+      cargoempleados,
+      medidacomercio,
+      inventario,
+      promediooro,
+      promedioganancia,
+      porcentajecompra
+    );
+    await axios.post(URI, {
+      nombre,
+      rif,
+      numalianza,
+      direccionfiscal,
+      estado,
+      municipio,
+      parroquia,
+      representante,
+      telefonorepresentante,
+      correorepresentante,
+      cedularepresentante,
+      rumrepresentante,
+      tipoactividad,
+      actividadminera,
+      descripcionactminera,
+      nombreencargado,
+      cedulaencargado,
+      numempleados,
+      nombreempleados,
+      cedulaempleados,
+      cargoempleados,
+      medidacomercio,
+      inventario,
+      promediooro,
+      promedioganancia,
+      porcentajecompra,
+    });
+  };
+
   const ve = venezuela;
   const { pais: estado } = ve;
   let navigate = useNavigate();
 
   const [pagina, setPagina] = useState(1);
   const [numEmpleados, setNumEmpleados] = useState(0);
-  console.log(numEmpleados);
   const empleados = [];
+
   for (let i = 0; i < numEmpleados; i++) {
     empleados.push(
       <Stack spacing={4} direction={"row"} p={3} flex="1">
         <Text>{i + 1}</Text>
-        <Input placeholder="Nombres y Apellidos" size="md" boxShadow="xs" />
-        <Input placeholder="C.I." size="md" boxShadow="xs" />
-        <Input placeholder="Cargo" size="md" boxShadow="xs" />
+        <Input
+          placeholder="Nombres y Apellidos"
+          size="md"
+          boxShadow="xs"
+          {...register("nombreempleados")}
+        />
+        <Input
+          placeholder="C.I."
+          size="md"
+          boxShadow="xs"
+          {...register("cedulaempleados")}
+        />
+        <Input
+          placeholder="Cargo"
+          size="md"
+          boxShadow="xs"
+          {...register("cargoempleados")}
+        />
       </Stack>
     );
   }
-  const [formValues, setFormValues] = useState([{ name: "", email: "" }]);
 
   const [state, setState] = useState("");
   const [town, setTown] = useState("");
-  // eslint-disable-next-line
   const [parish, setParish] = useState("");
-
-  const [actValue, setActValue] = useState("");
-
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
 
   let municipios = ve.estado(state, {
     municipios: true,
   }).municipios;
   let parroquia = ve.municipio(town, { parroquias: true }).parroquias;
-
-  let handleChange = (i, e) => {
-    let newFormValues = [...formValues];
-    newFormValues[i][e.target.name] = e.target.value;
-    setFormValues(newFormValues);
-  };
-
-  let addFormFields = () => {
-    setFormValues([...formValues, { name: "", email: "" }]);
-  };
-
-  let removeFormFields = (i) => {
-    let newFormValues = [...formValues];
-    newFormValues.splice(i, 1);
-    setFormValues(newFormValues);
-  };
 
   return (
     <>
@@ -169,11 +252,11 @@ const ComRegister = () => {
                     />
                     <Input
                       placeholder="Dirección fiscal"
-                      id="dirfiscal"
-                      name="dirfiscal"
+                      id="direccionfiscal"
+                      name="direccionfiscal"
                       size="md"
                       boxShadow="xs"
-                      {...register("dirfiscal")}
+                      {...register("direccionfiscal")}
                     />
                   </Stack>
 
@@ -245,7 +328,7 @@ const ComRegister = () => {
                       placeholder="Número de teléfono"
                       size="md"
                       boxShadow="xs"
-                      {...register("rnumtelefono")}
+                      {...register("telefonorepresentante")}
                     />
                   </Stack>
                   <Stack spacing={4} direction={"row"} p={3} flex="1">
@@ -253,19 +336,19 @@ const ComRegister = () => {
                       placeholder="Email"
                       size="md"
                       boxShadow="xs"
-                      {...register("rcorreo")}
+                      {...register("correorepresentante")}
                     />
                     <Input
                       placeholder="Número de cédula"
                       size="md"
                       boxShadow="xs"
-                      {...register("rcedula")}
+                      {...register("cedularepresentante")}
                     />
                     <Input
                       placeholder="RUM"
                       size="md"
                       boxShadow="xs"
-                      {...register("rrum")}
+                      {...register("rumrepresentante")}
                     />
                   </Stack>
                 </Box>
@@ -274,25 +357,25 @@ const ComRegister = () => {
                   <Heading as="h3" size="md" mb={4} isTruncated>
                     Tipo de Actividad
                   </Heading>
-                  <RadioGroup onChange={setActValue} value={actValue}>
+                  <CheckboxGroup>
                     <Stack spacing={4} direction={"column"} p={3} flex="1">
-                      <Radio {...register("actividad")} value="compra">
+                      <Checkbox {...register("tipoactividad")} value="compra">
                         Compra/Venta
-                      </Radio>
-                      <Radio
-                        {...register("actividad")}
+                      </Checkbox>
+                      <Checkbox
+                        {...register("tipoactividad")}
                         value="analisisfundicion"
                       >
                         Análisis/Fundición
-                      </Radio>
-                      <Radio
-                        {...register("actividad")}
+                      </Checkbox>
+                      <Checkbox
+                        {...register("tipoactividad")}
                         value="comercializacionexportacion"
                       >
                         Comercialización/Exportadores
-                      </Radio>
+                      </Checkbox>
                     </Stack>
-                  </RadioGroup>
+                  </CheckboxGroup>
                 </Box>
 
                 <Box m={4}>
@@ -301,35 +384,35 @@ const ComRegister = () => {
                   </Heading>
                   <Stack spacing={4} direction={"row"} p={3} flex="1">
                     <Checkbox
-                      {...register("activmin")}
+                      {...register("actividadminera")}
                       value="oro"
                       colorScheme={"green"}
                     >
                       Oro
                     </Checkbox>
                     <Checkbox
-                      {...register("activmin")}
+                      {...register("actividadminera")}
                       value="diamante"
                       colorScheme={"green"}
                     >
                       Diamante
                     </Checkbox>
                     <Checkbox
-                      {...register("activmin")}
+                      {...register("actividadminera")}
                       value="coltan"
                       colorScheme={"green"}
                     >
                       Coltán
                     </Checkbox>
                     <Checkbox
-                      {...register("activmin")}
+                      {...register("actividadminera")}
                       value="plata"
                       colorScheme={"green"}
                     >
                       Plata
                     </Checkbox>
                     <Checkbox
-                      {...register("activmin")}
+                      {...register("actividadminera")}
                       value="calsiterita"
                       colorScheme={"green"}
                     >
@@ -337,7 +420,7 @@ const ComRegister = () => {
                     </Checkbox>
                   </Stack>
                   <Textarea
-                    {...register("descactivmin")}
+                    {...register("descripcionactminera")}
                     placeholder="Breve descripción de su actividad minera"
                   />
                 </Box>
@@ -423,7 +506,7 @@ const ComRegister = () => {
                       <i>Observaciones</i>
                     </Text>
                   </Heading>
-                  <RadioGroup onChange={setActValue} value={actValue}>
+                  <CheckboxGroup>
                     <Stack
                       spacing={4}
                       direction={"row"}
@@ -432,18 +515,21 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Radio {...register("actividad")} value="compra">
+                        <Checkbox
+                          {...register("inventario")}
+                          value="espectometro"
+                        >
                           Espectómetro
-                        </Radio>
+                        </Checkbox>
                       </Box>
                       <Box>
                         <Input
                           placeholder="Serial, Marca y Modelo"
-                          id="medidacomercio"
-                          name="medidacomercio"
+                          id="observaciones"
+                          name="observaciones"
                           size="md"
                           boxShadow="xs"
-                          {...register("medidacomercio")}
+                          {...register("observaciones")}
                         />
                       </Box>
                     </Stack>
@@ -455,18 +541,21 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Radio {...register("actividad")} value="compra">
+                        <Checkbox
+                          {...register("inventario")}
+                          value="cajafuerte"
+                        >
                           Caja Fuerte
-                        </Radio>
+                        </Checkbox>
                       </Box>
                       <Box>
                         <Input
-                          placeholder="Cantidad y Modelo"
-                          id="medidacomercio"
-                          name="medidacomercio"
+                          placeholder="Serial, Marca y Modelo"
+                          id="observaciones"
+                          name="observaciones"
                           size="md"
                           boxShadow="xs"
-                          {...register("medidacomercio")}
+                          {...register("observaciones")}
                         />
                       </Box>
                     </Stack>
@@ -478,18 +567,18 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Radio {...register("actividad")} value="compra">
+                        <Checkbox {...register("inventario")} value="cerradura">
                           Cerradura
-                        </Radio>
+                        </Checkbox>
                       </Box>
                       <Box>
                         <Input
-                          placeholder="Cantidad y Modelo"
-                          id="medidacomercio"
-                          name="medidacomercio"
+                          placeholder="Serial, Marca y Modelo"
+                          id="observaciones"
+                          name="observaciones"
                           size="md"
                           boxShadow="xs"
-                          {...register("medidacomercio")}
+                          {...register("observaciones")}
                         />
                       </Box>
                     </Stack>
@@ -501,18 +590,18 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Radio {...register("actividad")} value="compra">
+                        <Checkbox {...register("inventario")} value="bombona">
                           Bombona
-                        </Radio>
+                        </Checkbox>
                       </Box>
                       <Box>
                         <Input
-                          placeholder="Modelo"
-                          id="medidacomercio"
-                          name="medidacomercio"
+                          placeholder="Serial, Marca y Modelo"
+                          id="observaciones"
+                          name="observaciones"
                           size="md"
                           boxShadow="xs"
-                          {...register("medidacomercio")}
+                          {...register("observaciones")}
                         />
                       </Box>
                     </Stack>
@@ -524,18 +613,18 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Radio {...register("actividad")} value="compra">
+                        <Checkbox {...register("inventario")} value="balanza">
                           Balanza
-                        </Radio>
+                        </Checkbox>
                       </Box>
                       <Box>
                         <Input
-                          placeholder="Cantidad y Modelo"
-                          id="medidacomercio"
-                          name="medidacomercio"
+                          placeholder="Serial, Marca y Modelo"
+                          id="observaciones"
+                          name="observaciones"
                           size="md"
                           boxShadow="xs"
-                          {...register("medidacomercio")}
+                          {...register("observaciones")}
                         />
                       </Box>
                     </Stack>
@@ -547,18 +636,18 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Radio {...register("actividad")} value="compra">
+                        <Checkbox {...register("inventario")} value="rejas">
                           Rejas
-                        </Radio>
+                        </Checkbox>
                       </Box>
                       <Box>
                         <Input
-                          placeholder="Cantidad y Modelo"
-                          id="medidacomercio"
-                          name="medidacomercio"
+                          placeholder="Serial, Marca y Modelo"
+                          id="observaciones"
+                          name="observaciones"
                           size="md"
                           boxShadow="xs"
-                          {...register("medidacomercio")}
+                          {...register("observaciones")}
                         />
                       </Box>
                     </Stack>
@@ -570,18 +659,21 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Radio {...register("actividad")} value="compra">
+                        <Checkbox
+                          {...register("inventario")}
+                          value="puertareforzada"
+                        >
                           Puerta Reforzada
-                        </Radio>
+                        </Checkbox>
                       </Box>
                       <Box>
                         <Input
-                          placeholder="Cantidad y Modelo"
-                          id="medidacomercio"
-                          name="medidacomercio"
+                          placeholder="Serial, Marca y Modelo"
+                          id="observaciones"
+                          name="observaciones"
                           size="md"
                           boxShadow="xs"
-                          {...register("medidacomercio")}
+                          {...register("observaciones")}
                         />
                       </Box>
                     </Stack>
@@ -593,22 +685,22 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Radio {...register("actividad")} value="compra">
+                        <Checkbox {...register("inventario")} value="otros">
                           Otros
-                        </Radio>
+                        </Checkbox>
                       </Box>
                       <Box>
                         <Input
-                          placeholder="Especifique"
-                          id="medidacomercio"
-                          name="medidacomercio"
+                          placeholder="Información"
+                          id="observaciones"
+                          name="observaciones"
                           size="md"
                           boxShadow="xs"
-                          {...register("medidacomercio")}
+                          {...register("observaciones")}
                         />
                       </Box>
                     </Stack>
-                  </RadioGroup>
+                  </CheckboxGroup>
                 </Box>
 
                 <Box m={4}>
@@ -618,29 +710,29 @@ const ComRegister = () => {
                   <Stack spacing={4} direction={"row"} p={3} flex="1">
                     <Input
                       placeholder="Promedio de compra de oro mensual"
-                      id="medidacomercio"
-                      name="medidacomercio"
+                      id="promediooro"
+                      name="promediooro"
                       size="md"
                       boxShadow="xs"
-                      {...register("medidacomercio")}
+                      {...register("promediooro")}
                     />
                     <Input
                       placeholder="Promedio de ganancia neta mensual"
-                      id="medidacomercio"
-                      name="medidacomercio"
+                      id="promedioganancia"
+                      name="promedioganancia"
                       size="md"
                       boxShadow="xs"
-                      {...register("medidacomercio")}
+                      {...register("promedioganancia")}
                     />
                   </Stack>
                   <Stack spacing={4} direction={"row"} p={3} flex="1">
                     <Input
                       placeholder="% de la compra en oro en relación al precio internacional"
-                      id="medidacomercio"
-                      name="medidacomercio"
+                      id="porcentajecompra"
+                      name="porcentajecompra"
                       size="md"
                       boxShadow="xs"
-                      {...register("medidacomercio")}
+                      {...register("porcentajecompra")}
                     />
                   </Stack>
                 </Box>
@@ -824,12 +916,12 @@ const ComRegister = () => {
                 )}
 
                 {pagina >= 3 && (
-                  <Link to="/homeauth">
+                  <Button type="submit">
                     <Image
-                      src="https://i.imgur.com/cWcllqB.png"
                       width="150px"
-                    ></Image>
-                  </Link>
+                      src="https://i.imgur.com/cWcllqB.png"
+                    />
+                  </Button>
                 )}
               </Stack>
             </Box>

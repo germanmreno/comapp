@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { AiOutlineWallet } from "react-icons";
+import React from "react";
 
-import { Box, Button, Image, Stack } from "@chakra-ui/react";
+import { Box, Image, Stack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 const ComHome = () => {

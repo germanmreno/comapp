@@ -1,22 +1,39 @@
-import { Box, Image, Stack } from "@chakra-ui/react";
+import { AlertDescription, Box, Image, Stack } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../styles/UserLogin.css";
 
-const URI = "http://localhost:8000/comapp/";
+const URI = "http://localhost:8000/comapp/login";
 
 const UserLogin = () => {
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
+  const [nombreusuario, setNombreUsuario] = useState("");
+  const [contraseña, setContraseña] = useState("");
+  const navigate = useNavigate();
 
   //Procedimiento guardar
   const store = async (e) => {
     e.preventDefault();
-    await axios.post(URI, {
-      user,
-      password,
-    });
+    const response = await axios
+      .post(URI, {
+        nombreusuario,
+        contraseña,
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(
+          "Usuario no autenticado. Por favor, intente con uno correcto o verifique sus datos."
+        );
+      });
+
+    console.log(response);
+
+    if (response.status === 200) {
+      localStorage.setItem("jwt", response.data.jwt);
+      localStorage.setItem("jwt-init-date", new Date().getTime());
+      alert("Inicio de sesión exitoso.");
+      navigate("/home");
+    }
   };
 
   return (
@@ -51,26 +68,41 @@ const UserLogin = () => {
 
       <Box className="logo-container" mt="60px"></Box>
       <Box className="login-container-form">
-        <h2 id="login-text">Inicia sesión con tu cuenta</h2>
-        <div className="login-input-background">
-          <input placeholder="Correo electrónico"></input>
-        </div>
-        <div className="login-input-background">
-          <input type="password" placeholder="Contraseña"></input>
-        </div>
-        <div className="forgot-password-container">
-          <h2 id="forgot-password-text">
-            <a href="/">¿Olvidaste tu contraseña?</a>
-          </h2>
-        </div>
-        <div className="newregister-text-container">
-          <h2 id="newregister-text">
-            <Link to="/register">¿No posees una cuenta? Regístrate</Link>
-          </h2>
-        </div>
-        <button className="login-btn" type="submit">
-          <Link to="/home">INICIAR SESIÓN</Link>
-        </button>
+        <form onSubmit={store} className="login-form">
+          <h2 id="login-text">Inicia sesión con tu cuenta</h2>
+          <div className="login-input-background">
+            <input
+              placeholder="Nombre de usuario"
+              id="nombreusuario"
+              name="nombreusuario"
+              value={nombreusuario}
+              onChange={(e) => setNombreUsuario(e.target.value)}
+            ></input>
+          </div>
+          <div className="login-input-background">
+            <input
+              type="password"
+              placeholder="Contraseña"
+              id="contraseña"
+              name="contraseña"
+              value={contraseña}
+              onChange={(e) => setContraseña(e.target.value)}
+            ></input>
+          </div>
+          <div className="forgot-password-container">
+            <h2 id="forgot-password-text">
+              <a href="/">¿Olvidaste tu contraseña?</a>
+            </h2>
+          </div>
+          <div className="newregister-text-container">
+            <h2 id="newregister-text">
+              <Link to="/register">¿No posees una cuenta? Regístrate</Link>
+            </h2>
+          </div>
+          <button className="login-btn" type="submit">
+            INICIAR SESIÓN
+          </button>
+        </form>
       </Box>
     </div>
   );

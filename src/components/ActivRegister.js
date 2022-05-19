@@ -6,20 +6,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const ActivRegister = () => {
-  let response;
-  useEffect(async () => {
-    let response = await axios.get(
-      "http://localhost:8000/comapp/actividadcomercialdownload",
-      { responseType: "blob" }
-    );
-    if (response.data.error) {
-      console.error(response.data.error);
-    }
-  }, []);
-
-  const fileURL = window.URL.createObjectURL(new Blob([response.data]));
-  const fileName = response.headers["content-disposition"].substring(22, 52);
-
   return (
     <>
       <Box className="header-app" position="fixed" top="0">
@@ -89,7 +75,7 @@ const ActivRegister = () => {
               align="center"
             >
               <Image src="https://i.imgur.com/SVrAvJi.png" width="50px" />
-              <a href={fileURL} download={fileName} target="_blank">
+              <a target="_blank">
                 <Text color="green">
                   REGISTRO DE ACTIVIDAD COMERCIAL (COMPRA Y VENTA) MENSUAL
                 </Text>

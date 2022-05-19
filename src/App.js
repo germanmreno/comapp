@@ -10,7 +10,6 @@ import UserLogin from "./components/UserLogin";
 import ConfirmRegister from "./components/ConfirmRegister";
 import ComHome from "./components/ComHome";
 import ActivRegister from "./components/ActivRegister";
-import ComHomeAuth from "./components/ComHomeAuth";
 import AnalisisRegister from "./components/AnalisisRegister";
 import Contact from "./components/Contact";
 import Certificate from "./components/Certificate";
@@ -48,11 +47,11 @@ function App() {
             <Route path="/confirmregister" element={<ConfirmRegister />} />
             <Route path="/certificate" element={<Certificate />} />
             <Route path="/activregister" element={<ActivRegister />} />
-            <Route path="/homeauth" element={<ComHomeAuth />} />
             <Route path="/analisisregister" element={<AnalisisRegister />} />
           </Route>
           <Route path="/contact" element={<Contact />} />
           <Route path="/help" element={<Help />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>
     </AuthContext.Provider>

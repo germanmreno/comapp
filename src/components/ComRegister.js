@@ -101,8 +101,12 @@ const ComRegister = () => {
         correorepresentante,
         cedularepresentante,
         rumrepresentante,
-        tipoactividad,
-        actividadminera,
+        tipoactividad: tipoactividad
+          .toString()
+          .replace(/[^A-Z0-9,/áéíóú]+/gi, ""),
+        actividadminera: actividadminera
+          .toString()
+          .replace(/[^A-Z0-9,/áéíóú]+/gi, ""),
         descripcionactminera,
         nombreencargado,
         cedulaencargado,
@@ -111,13 +115,16 @@ const ComRegister = () => {
         cedulaempleados,
         cargoempleados,
         medidacomercio,
-        inventario,
+        inventario: inventario.toString().replace(/[^A-Z0-9,/áéíóú]+/gi, ""),
         promediooro,
         promedioganancia,
         porcentajecompra,
         jwt,
       })
-      .then(() => navigate("/homeauth"))
+      .then(() => {
+        alert("Registro exitoso");
+        navigate("/home");
+      })
       .catch((err) => console.error(err));
   };
 
@@ -370,18 +377,21 @@ const ComRegister = () => {
                   </Heading>
                   <CheckboxGroup>
                     <Stack spacing={4} direction={"column"} p={3} flex="1">
-                      <Checkbox {...register("tipoactividad")} value="compra">
+                      <Checkbox
+                        {...register("tipoactividad")}
+                        value="Compra/Venta"
+                      >
                         Compra/Venta
                       </Checkbox>
                       <Checkbox
                         {...register("tipoactividad")}
-                        value="analisisfundicion"
+                        value="Análisis/Fundición"
                       >
                         Análisis/Fundición
                       </Checkbox>
                       <Checkbox
                         {...register("tipoactividad")}
-                        value="comercializacionexportacion"
+                        value="Comercialización/Exportación"
                       >
                         Comercialización/Exportadores
                       </Checkbox>
@@ -396,35 +406,35 @@ const ComRegister = () => {
                   <Stack spacing={4} direction={"row"} p={3} flex="1">
                     <Checkbox
                       {...register("actividadminera")}
-                      value="oro"
+                      value="Oro"
                       colorScheme={"green"}
                     >
                       Oro
                     </Checkbox>
                     <Checkbox
                       {...register("actividadminera")}
-                      value="diamante"
+                      value="Diamante"
                       colorScheme={"green"}
                     >
                       Diamante
                     </Checkbox>
                     <Checkbox
                       {...register("actividadminera")}
-                      value="coltan"
+                      value="Coltán"
                       colorScheme={"green"}
                     >
                       Coltán
                     </Checkbox>
                     <Checkbox
                       {...register("actividadminera")}
-                      value="plata"
+                      value="Plata"
                       colorScheme={"green"}
                     >
                       Plata
                     </Checkbox>
                     <Checkbox
                       {...register("actividadminera")}
-                      value="calsiterita"
+                      value="Casiterita"
                       colorScheme={"green"}
                     >
                       Casiterita
@@ -528,7 +538,7 @@ const ComRegister = () => {
                       <Box w="30%">
                         <Checkbox
                           {...register("inventario")}
-                          value="espectometro"
+                          value="Espectómetro"
                         >
                           Espectómetro
                         </Checkbox>
@@ -554,7 +564,7 @@ const ComRegister = () => {
                       <Box w="30%">
                         <Checkbox
                           {...register("inventario")}
-                          value="cajafuerte"
+                          value="Caja Fuerte"
                         >
                           Caja Fuerte
                         </Checkbox>
@@ -578,7 +588,7 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Checkbox {...register("inventario")} value="cerradura">
+                        <Checkbox {...register("inventario")} value="Cerradura">
                           Cerradura
                         </Checkbox>
                       </Box>
@@ -601,7 +611,7 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Checkbox {...register("inventario")} value="bombona">
+                        <Checkbox {...register("inventario")} value="Bombona">
                           Bombona
                         </Checkbox>
                       </Box>
@@ -624,7 +634,7 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Checkbox {...register("inventario")} value="balanza">
+                        <Checkbox {...register("inventario")} value="Balanza">
                           Balanza
                         </Checkbox>
                       </Box>
@@ -647,7 +657,7 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Checkbox {...register("inventario")} value="rejas">
+                        <Checkbox {...register("inventario")} value="Rejas">
                           Rejas
                         </Checkbox>
                       </Box>
@@ -672,7 +682,7 @@ const ComRegister = () => {
                       <Box w="30%">
                         <Checkbox
                           {...register("inventario")}
-                          value="puertareforzada"
+                          value="Puerta Reforzada"
                         >
                           Puerta Reforzada
                         </Checkbox>
@@ -696,7 +706,7 @@ const ComRegister = () => {
                       justifyContent="space-around"
                     >
                       <Box w="30%">
-                        <Checkbox {...register("inventario")} value="otros">
+                        <Checkbox {...register("inventario")} value="Otros">
                           Otros
                         </Checkbox>
                       </Box>
@@ -920,7 +930,7 @@ const ComRegister = () => {
                           ? pagina + 1
                           : pagina === 2
                           ? pagina + 1
-                          : navigate("/homeauth")
+                          : navigate("/home")
                       )
                     }
                   ></Image>

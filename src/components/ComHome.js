@@ -1,16 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../auth/AuthContext";
 
 import { Box, Image, Stack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { types } from "../types/types";
+import axios from "axios";
+
+const URI = "http://localhost:8000/comapp/home";
 
 const ComHome = () => {
   const {
-    user: { logged },
+    user: { jwt },
   } = useContext(AuthContext);
+  const [authComRegister, setAuthComRegister] = useState(false);
 
   const { dispatch } = useContext(AuthContext);
+
+  useEffect(() => {
+    confirmComRegister();
+  }, []);
+
+  const confirmComRegister = async () => {
+    const res = await axios.post(URI, {
+      jwt,
+    });
+    setAuthComRegister(res.data);
+    console.log(authComRegister);
+  };
 
   return (
     <>
@@ -71,35 +87,85 @@ const ComHome = () => {
             <Image src="https://i.imgur.com/Iyg74x0.png" width="400px" />
           </Box>
         </Box>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          w="50%"
-          flexDirection="column"
-        >
-          <Stack
-            mt={-2}
-            spacing={4}
-            direction={"column"}
-            p={3}
-            flex="1"
-            alignItems="center"
-            justifyContent="Center"
-          >
-            <Image
-              htmlWidth="275px"
-              src="https://i.imgur.com/61iZxXu.png"
-              alt="Comercialización CVM"
-            />
-            <Link to="/comregister">
-              <Image
-                src="https://i.imgur.com/R7uehhJ.png"
-                width="250px"
-              ></Image>
-            </Link>
-          </Stack>
-        </Box>
+        {authComRegister && (
+          <>
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              w="50%"
+              flexDirection="column"
+            >
+              <Stack
+                mt={-2}
+                spacing={4}
+                direction={"column"}
+                p={3}
+                flex="1"
+                alignItems="center"
+                justifyContent="Center"
+              >
+                <Link to="/confirmregister">
+                  <Image
+                    src="https://i.imgur.com/bS7KIPb.png"
+                    width="300px"
+                  ></Image>
+                </Link>
+                <Link to="/certificate">
+                  <Image
+                    src="https://i.imgur.com/67q3YFP.png"
+                    width="300px"
+                  ></Image>
+                </Link>
+                <Link to="/activregister">
+                  <Image
+                    src="https://i.imgur.com/MR22FOG.png"
+                    width="300px"
+                  ></Image>
+                </Link>
+                <Link to="/acta">
+                  <Image
+                    src="https://i.imgur.com/0biuOBJ.png"
+                    width="300px"
+                  ></Image>
+                </Link>
+              </Stack>
+            </Box>
+          </>
+        )}
+        {!authComRegister && (
+          <>
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              w="50%"
+              flexDirection="column"
+            >
+              <Stack
+                mt={-2}
+                spacing={4}
+                direction={"column"}
+                p={3}
+                flex="1"
+                alignItems="center"
+                justifyContent="Center"
+              >
+                <Image
+                  htmlWidth="275px"
+                  src="https://i.imgur.com/61iZxXu.png"
+                  alt="Comercialización CVM"
+                />
+                <Link to="/comregister">
+                  <Image
+                    src="https://i.imgur.com/R7uehhJ.png"
+                    width="250px"
+                  ></Image>
+                </Link>
+              </Stack>
+            </Box>
+          </>
+        )}
       </Box>
     </>
   );

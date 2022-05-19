@@ -29,15 +29,13 @@ const UserRegister = () => {
         correo,
         telefono,
       });
-
-      console.log(response);
     } else {
       alert("Sus contraseñas no coinciden. Por favor verifique.");
     }
-  };
 
-  // alert("Se ha registrado de forma exitosa. Por favor, inicie sesión.");
-  // navigate("/login");
+    alert("Se ha registrado de forma exitosa. Por favor, inicie sesión.");
+    navigate("/login");
+  };
 
   return (
     <div className="register">
@@ -70,7 +68,7 @@ const UserRegister = () => {
       </Box>
       <Box className="logo-register-container" mt="100px"></Box>
       <Box className="register-container-form">
-        <form onSubmit={store} class="register-form">
+        <form onSubmit={store} className="register-form">
           <h2 id="login-text">Regístrate</h2>
           <div className="register-input-background">
             <input

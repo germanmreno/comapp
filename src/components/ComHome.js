@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../auth/AuthContext";
 
 import { Box, Image, Stack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { types } from "../types/types";
 
 const ComHome = () => {
+  const {
+    user: { logged },
+  } = useContext(AuthContext);
+
+  const { dispatch } = useContext(AuthContext);
+
   return (
     <>
       <Box className="header-app" position="fixed" top="0">
@@ -16,7 +24,9 @@ const ComHome = () => {
             p={2}
             flex="1"
             justify="flex-end"
+            alignItems="center"
             width="100%"
+            mr={3}
           >
             <Link to="/home">
               <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
@@ -26,6 +36,16 @@ const ComHome = () => {
             </Link>
             <Link to="/help">
               <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+            </Link>
+            <Link
+              to="/"
+              onClick={() =>
+                dispatch({
+                  type: types.logout,
+                })
+              }
+            >
+              <Image src="https://i.imgur.com/pmn7y45.png" height="40px" />
             </Link>
           </Stack>
         </Box>

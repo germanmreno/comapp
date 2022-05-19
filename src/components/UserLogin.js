@@ -1,7 +1,9 @@
-import { AlertDescription, Box, Image, Stack } from "@chakra-ui/react";
+import { Box, Image, Stack } from "@chakra-ui/react";
 import axios from "axios";
-import { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../auth/AuthContext";
+import { types } from "../types/types";
 import "../styles/UserLogin.css";
 
 const URI = "http://localhost:8000/comapp/login";
@@ -10,6 +12,7 @@ const UserLogin = () => {
   const [nombreusuario, setNombreUsuario] = useState("");
   const [contraseña, setContraseña] = useState("");
   const navigate = useNavigate();
+  const { dispatch } = useContext(AuthContext);
 
   //Procedimiento guardar
   const store = async (e) => {
@@ -29,8 +32,7 @@ const UserLogin = () => {
     console.log(response);
 
     if (response.status === 200) {
-      localStorage.setItem("jwt", response.data.jwt);
-      localStorage.setItem("jwt-init-date", new Date().getTime());
+      dispatch({ type: types.login, payload: { jwt: response.data.jwt } });
       alert("Inicio de sesión exitoso.");
       navigate("/home");
     }

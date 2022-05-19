@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import {
@@ -18,11 +18,16 @@ import {
 import venezuela from "venezuela";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../auth/AuthContext";
 
 const URI = "http://localhost:8000/comapp/companyregister";
 
 const ComRegister = () => {
   const { register, handleSubmit } = useForm();
+  const {
+    user: { jwt },
+  } = useContext(AuthContext);
+
   const onSubmit = async (data) => {
     const {
       nombre,
@@ -53,6 +58,7 @@ const ComRegister = () => {
       porcentajecompra,
     } = data;
     console.log(
+      jwt,
       nombre,
       rif,
       numalianza,
@@ -80,34 +86,39 @@ const ComRegister = () => {
       promedioganancia,
       porcentajecompra
     );
-    await axios.post(URI, {
-      nombre,
-      rif,
-      numalianza,
-      direccionfiscal,
-      estado,
-      municipio,
-      parroquia,
-      representante,
-      telefonorepresentante,
-      correorepresentante,
-      cedularepresentante,
-      rumrepresentante,
-      tipoactividad,
-      actividadminera,
-      descripcionactminera,
-      nombreencargado,
-      cedulaencargado,
-      numempleados,
-      nombreempleados,
-      cedulaempleados,
-      cargoempleados,
-      medidacomercio,
-      inventario,
-      promediooro,
-      promedioganancia,
-      porcentajecompra,
-    });
+    await axios
+      .post(URI, {
+        guid: jwt,
+        nombre,
+        rif,
+        numalianza,
+        direccionfiscal,
+        estado,
+        municipio,
+        parroquia,
+        representante,
+        telefonorepresentante,
+        correorepresentante,
+        cedularepresentante,
+        rumrepresentante,
+        tipoactividad,
+        actividadminera,
+        descripcionactminera,
+        nombreencargado,
+        cedulaencargado,
+        numempleados,
+        nombreempleados,
+        cedulaempleados,
+        cargoempleados,
+        medidacomercio,
+        inventario,
+        promediooro,
+        promedioganancia,
+        porcentajecompra,
+        jwt,
+      })
+      .then(() => navigate("/homeauth"))
+      .catch((err) => console.error(err));
   };
 
   const ve = venezuela;

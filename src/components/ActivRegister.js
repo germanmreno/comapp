@@ -1,11 +1,55 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/ActivRegister.css";
 
-import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Image,
+  Input,
+  Stack,
+  Text,
+  Button,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+const URI = "http://localhost:8000/comapp/activregister";
+
 const ActivRegister = () => {
+  const [file, setFile] = useState("");
+  const [filename, setFileName] = useState("Choose file");
+  const [uploadedFile, setUploadedFile] = useState({});
+
+  const onChange = (e) => {
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await axios.post(URI, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const { fileName, filePath } = res.data;
+
+      setUploadedFile({ fileName, filePath });
+      alert("Archivo subido de forma exitosa.");
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.log("There was a problem with the server");
+      } else {
+        console.log(err.response.data.msg);
+      }
+    }
+  };
+
   return (
     <>
       <Box className="header-app" position="fixed" top="0">
@@ -75,7 +119,7 @@ const ActivRegister = () => {
               align="center"
             >
               <Image src="https://i.imgur.com/SVrAvJi.png" width="50px" />
-              <a target="_blank">
+              <a href="/activfile">
                 <Text color="green">
                   REGISTRO DE ACTIVIDAD COMERCIAL (COMPRA Y VENTA) MENSUAL
                 </Text>
@@ -88,34 +132,29 @@ const ActivRegister = () => {
             alignItems="center"
             justifyContent="center"
           >
-            <Stack
-              spacing={4}
-              direction={"row"}
-              p={3}
-              flex="1"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Link to="/homeauth">
-                <Image
-                  src="https://i.imgur.com/R3DQi40.png"
-                  width="150px"
-                  cursor="pointer"
-                />
-              </Link>
+            <form onSubmit={onSubmit}>
+              <Stack
+                spacing={4}
+                direction={"row"}
+                p={3}
+                flex="1"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Link to="/homeauth">
+                  <Image
+                    src="https://i.imgur.com/R3DQi40.png"
+                    width="200px"
+                    cursor="pointer"
+                  />
+                </Link>
+                <Input type="file" name="file" id="file" onChange={onChange} />
 
-              <Image
-                src="https://i.imgur.com/Ss8MqbE.png"
-                width="150px"
-                cursor="pointer"
-              />
-
-              <Image
-                src="https://i.imgur.com/cWcllqB.png"
-                width="150px"
-                cursor="pointer"
-              />
-            </Stack>
+                <Button type="submit" value="Upload">
+                  <Image width="150px" src="https://i.imgur.com/cWcllqB.png" />
+                </Button>
+              </Stack>
+            </form>
           </Box>
         </Box>
       </Box>

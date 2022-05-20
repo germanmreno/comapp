@@ -123,7 +123,7 @@ const ComHome = () => {
                     width="300px"
                   ></Image>
                 </Link>
-                <Link to="/acta">
+                <Link to="/actarecepcion">
                   <Image
                     src="https://i.imgur.com/0biuOBJ.png"
                     width="300px"

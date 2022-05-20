@@ -16,6 +16,7 @@ import Certificate from "./components/Certificate";
 import RequireAuth from "./components/RequireAuth";
 import Help from "./components/Help";
 import AuthConfirm from "./components/AuthConfirm";
+import ActaRecepcion from "./components/ActaRecepcion";
 
 const init = () => {
   return JSON.parse(localStorage.getItem("user")) || { logged: false };
@@ -48,6 +49,7 @@ function App() {
             <Route path="/certificate" element={<Certificate />} />
             <Route path="/activregister" element={<ActivRegister />} />
             <Route path="/analisisregister" element={<AnalisisRegister />} />
+            <Route path="/actarecepcion" element={<ActaRecepcion />} />
           </Route>
           <Route path="/contact" element={<Contact />} />
           <Route path="/help" element={<Help />} />

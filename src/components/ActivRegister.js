@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/ActivRegister.css";
 
 import {
@@ -13,7 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const URI = "http://localhost:8000/comapp/activregister";
+const URI = "/comapp/activregister";
 
 const ActivRegister = () => {
   const [file, setFile] = useState("");
@@ -119,7 +119,10 @@ const ActivRegister = () => {
               align="center"
             >
               <Image src="https://i.imgur.com/SVrAvJi.png" width="50px" />
-              <a href="/activfile">
+              <a
+                href="https://docs.google.com/spreadsheets/d/1mH8lOt8rXReeFNM4Pp56qvsdTwVdc5LM/edit#gid=1308679990"
+                target="_blank"
+              >
                 <Text color="green">
                   REGISTRO DE ACTIVIDAD COMERCIAL (COMPRA Y VENTA) MENSUAL
                 </Text>
@@ -141,7 +144,7 @@ const ActivRegister = () => {
                 alignItems="center"
                 justifyContent="center"
               >
-                <Link to="/homeauth">
+                <Link to="/home">
                   <Image
                     src="https://i.imgur.com/R3DQi40.png"
                     width="200px"

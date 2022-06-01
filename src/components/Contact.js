@@ -3,8 +3,6 @@ import "../styles/Contact.css";
 
 import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import DownloadLink from "react-download-link";
-import { Input } from "reactstrap";
 
 const Contact = () => {
   return (
@@ -23,9 +21,6 @@ const Contact = () => {
           >
             <Link to="/">
               <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
-            </Link>
-            <Link to="/register">
-              <Image src="https://i.imgur.com/8NAKakM.png" height="80px" />
             </Link>
             <Link to="/contact">
               <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />

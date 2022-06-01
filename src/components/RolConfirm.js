@@ -2,20 +2,20 @@ import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { AuthContext } from "../auth/AuthContext";
 
-function AuthConfirm() {
+function RolConfirm() {
   const {
     user: { logged, rol },
   } = useContext(AuthContext);
 
-  if (logged && rol === "admin") {
-    return <Navigate to="/companies" replace />;
+  if (!logged) {
+    return <Navigate to="/login" replace />;
   }
 
-  if (logged) {
+  if (rol !== "admin") {
     return <Navigate to="/home" replace />;
   }
 
   return <Outlet />;
 }
 
-export default AuthConfirm;
+export default RolConfirm;

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Heading, Image, Stack } from "@chakra-ui/react";
+import { Box, Image, Stack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 const Help = () => {
@@ -20,9 +20,6 @@ const Help = () => {
           >
             <Link to="/">
               <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
-            </Link>
-            <Link to="/register">
-              <Image src="https://i.imgur.com/8NAKakM.png" height="80px" />
             </Link>
             <Link to="/contact">
               <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />

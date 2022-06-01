@@ -1,22 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/ActivRegister.css";
 
-import {
-  Box,
-  Heading,
-  Image,
-  Input,
-  Stack,
-  Text,
-  Button,
-  Tag,
-} from "@chakra-ui/react";
+import { Box, Image, Input, Stack, Text, Button, Tag } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Label } from "reactstrap";
-import { message } from "antd";
 
-const URI = "http://localhost:8000/comapp/actarecepcion";
+const URI = "/comapp/actarecepcion";
 
 const ActaRecepcion = () => {
   const [file, setFile] = useState("");
@@ -72,7 +62,7 @@ const ActaRecepcion = () => {
             justify="flex-end"
             width="100%"
           >
-            <Link to="/homeauth">
+            <Link to="/home">
               <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
             </Link>
             <Link to="/contact">

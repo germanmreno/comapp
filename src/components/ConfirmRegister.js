@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import "../styles/ConfirmRegister.css";
 
-const URI = "http://localhost:8000/comapp/confirmregister";
+const URI = "/comapp/confirmregister";
 
 const ConfirmRegister = () => {
   const {
@@ -41,7 +41,7 @@ const ConfirmRegister = () => {
             justify="flex-end"
             width="100%"
           >
-            <Link to="/homeauth">
+            <Link to="/home">
               <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
             </Link>
             <Link to="/contact">

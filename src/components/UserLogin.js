@@ -6,7 +6,7 @@ import { AuthContext } from "../auth/AuthContext";
 import { types } from "../types/types";
 import "../styles/UserLogin.css";
 
-const URI = "http://localhost:8000/comapp/login";
+const URI = "/comapp/login";
 
 const UserLogin = () => {
   const [nombreusuario, setNombreUsuario] = useState("");
@@ -32,9 +32,17 @@ const UserLogin = () => {
     console.log(response);
 
     if (response.status === 200) {
-      dispatch({ type: types.login, payload: { jwt: response.data.jwt } });
+      dispatch({
+        type: types.login,
+        payload: { jwt: response.data.jwt, rol: response.data.rol },
+      });
+      console.log(response.data.rol);
       alert("Inicio de sesión exitoso.");
-      navigate("/home");
+      if (response.data.rol === "admin") {
+        navigate("/companies");
+      } else {
+        navigate("/home");
+      }
     }
   };
 
@@ -54,9 +62,6 @@ const UserLogin = () => {
           >
             <Link to="/home">
               <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
-            </Link>
-            <Link to="/register">
-              <Image src="https://i.imgur.com/8NAKakM.png" height="80px" />
             </Link>
             <Link to="/contact">
               <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />

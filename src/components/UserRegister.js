@@ -4,7 +4,7 @@ import { useState } from "react";
 import "../styles/UserRegister.css";
 import { Box, Image, Stack } from "@chakra-ui/react";
 
-const URI = "http://localhost:8000/comapp/register";
+const URI = "/comapp/register";
 
 const UserRegister = () => {
   const [nombreusuario, setNombreUsuario] = useState("");
@@ -53,9 +53,6 @@ const UserRegister = () => {
           >
             <Link to="/">
               <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
-            </Link>
-            <Link to="/register">
-              <Image src="https://i.imgur.com/8NAKakM.png" height="80px" />
             </Link>
             <Link to="/contact">
               <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />

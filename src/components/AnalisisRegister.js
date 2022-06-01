@@ -3,7 +3,6 @@ import "../styles/ActivRegister.css";
 
 import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import DownloadLink from "react-download-link";
 
 const AnalisisRegister = () => {
   return (
@@ -20,7 +19,7 @@ const AnalisisRegister = () => {
             justify="flex-end"
             width="100%"
           >
-            <Link to="/homeauth">
+            <Link to="/home">
               <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
             </Link>
             <Link to="/contact">

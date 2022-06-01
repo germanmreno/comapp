@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { types } from "../types/types";
 import axios from "axios";
 
-const URI = "http://localhost:8000/comapp/home";
+const URI = "/comapp/home";
 
 const ComHome = () => {
   const {
@@ -87,85 +87,79 @@ const ComHome = () => {
             <Image src="https://i.imgur.com/Iyg74x0.png" width="400px" />
           </Box>
         </Box>
-        {authComRegister && (
-          <>
-            <Box
-              display="flex"
-              justifyContent="center"
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          w="50%"
+          flexDirection="column"
+        >
+          {authComRegister && (
+            <Stack
+              mt={-2}
+              spacing={4}
+              direction={"column"}
+              p={3}
+              flex="1"
               alignItems="center"
-              w="50%"
-              flexDirection="column"
+              justifyContent="Center"
             >
-              <Stack
-                mt={-2}
-                spacing={4}
-                direction={"column"}
-                p={3}
-                flex="1"
-                alignItems="center"
-                justifyContent="Center"
-              >
-                <Link to="/confirmregister">
-                  <Image
-                    src="https://i.imgur.com/bS7KIPb.png"
-                    width="300px"
-                  ></Image>
-                </Link>
-                <Link to="/certificate">
-                  <Image
-                    src="https://i.imgur.com/67q3YFP.png"
-                    width="300px"
-                  ></Image>
-                </Link>
-                <Link to="/activregister">
-                  <Image
-                    src="https://i.imgur.com/MR22FOG.png"
-                    width="300px"
-                  ></Image>
-                </Link>
-                <Link to="/actarecepcion">
-                  <Image
-                    src="https://i.imgur.com/0biuOBJ.png"
-                    width="300px"
-                  ></Image>
-                </Link>
-              </Stack>
-            </Box>
-          </>
-        )}
-        {!authComRegister && (
-          <>
-            <Box
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              w="50%"
-              flexDirection="column"
-            >
-              <Stack
-                mt={-2}
-                spacing={4}
-                direction={"column"}
-                p={3}
-                flex="1"
-                alignItems="center"
-                justifyContent="Center"
-              >
+              <Image
+                htmlWidth="275px"
+                src="https://i.imgur.com/61iZxXu.png"
+                alt="Comercialización CVM"
+              />
+              <Link to="/confirmregister">
                 <Image
-                  htmlWidth="275px"
-                  src="https://i.imgur.com/61iZxXu.png"
-                  alt="Comercialización CVM"
-                />
-                <Link to="/comregister">
-                  <Image
-                    src="https://i.imgur.com/R7uehhJ.png"
-                    width="250px"
-                  ></Image>
-                </Link>
-              </Stack>
-            </Box>
-          </>
-        )}
+                  src="https://i.imgur.com/bS7KIPb.png"
+                  width="300px"
+                ></Image>
+              </Link>
+              <Link to="/certificate">
+                <Image
+                  src="https://i.imgur.com/67q3YFP.png"
+                  width="300px"
+                ></Image>
+              </Link>
+              <Link to="/activregister">
+                <Image
+                  src="https://i.imgur.com/MR22FOG.png"
+                  width="300px"
+                ></Image>
+              </Link>
+              <Link to="/actarecepcion">
+                <Image
+                  src="https://i.imgur.com/0biuOBJ.png"
+                  width="300px"
+                ></Image>
+              </Link>
+            </Stack>
+          )}
+
+          {!authComRegister && (
+            <Stack
+              mt={-2}
+              spacing={4}
+              direction={"column"}
+              p={3}
+              flex="1"
+              alignItems="center"
+              justifyContent="Center"
+            >
+              <Image
+                htmlWidth="275px"
+                src="https://i.imgur.com/61iZxXu.png"
+                alt="Comercialización CVM"
+              />
+              <Link to="/comregister">
+                <Image
+                  src="https://i.imgur.com/R7uehhJ.png"
+                  width="250px"
+                ></Image>
+              </Link>
+            </Stack>
+          )}
+        </Box>
       </Box>
     </>
   );

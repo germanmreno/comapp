@@ -20,7 +20,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../auth/AuthContext";
 
-const URI = "http://localhost:8000/comapp/companyregister";
+const URI = "/comapp/companyregister";
 
 const ComRegister = () => {
   const { register, handleSubmit } = useForm();

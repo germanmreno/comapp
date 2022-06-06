@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { slide as Menu } from 'react-burger-menu';
 
 import {
   Box,
@@ -7,22 +8,25 @@ import {
   Textarea,
   Checkbox,
   Image,
-  Radio,
   Stack,
   Input,
   Heading,
   Select,
   Text,
   CheckboxGroup,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import venezuela from "venezuela";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../auth/AuthContext";
+import "../styles/ComRegister.css";
 
 const URI = "/comapp/companyregister";
 
 const ComRegister = () => {
+  const [isLessThan1200] = useMediaQuery('(max-width: 1200px)');
+  const [isLargerThan1200] = useMediaQuery('(min-width: 1201px)');
   const { register, handleSubmit } = useForm();
   const {
     user: { jwt },
@@ -57,36 +61,8 @@ const ComRegister = () => {
       promedioganancia,
       porcentajecompra,
     } = data;
-    console.log(
-      jwt,
-      nombre,
-      rif,
-      numalianza,
-      direccionfiscal,
-      estado,
-      municipio,
-      parroquia,
-      representante,
-      telefonorepresentante,
-      correorepresentante,
-      cedularepresentante,
-      rumrepresentante,
-      tipoactividad,
-      actividadminera,
-      descripcionactminera,
-      nombreencargado,
-      cedulaencargado,
-      numempleados,
-      nombreempleados,
-      cedulaempleados,
-      cargoempleados,
-      medidacomercio,
-      inventario,
-      promediooro,
-      promedioganancia,
-      porcentajecompra
-    );
-    await axios
+
+      await axios
       .post(URI, {
         guid: jwt,
         nombre,
@@ -125,8 +101,8 @@ const ComRegister = () => {
         alert("Registro exitoso");
         navigate("/home");
       })
-      .catch((err) => console.error(err));
-  };
+      .catch((err) => console.error(err))
+  }
 
   const ve = venezuela;
   const { pais: estado } = ve;
@@ -177,13 +153,29 @@ const ComRegister = () => {
         <div className="gobierno-logo-container"></div>
         <div className="logo-app-container"></div>
         <Box h="100px" position="absolute" display="flex" width="100%">
-          <Stack
+        {isLessThan1200 && (
+        <Menu id="home-menu">
+          <Link to="/home">
+            <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+          </Link>
+          <Link to="/contact">
+            <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+          </Link>
+          <Link to="/help">
+            <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+          </Link>
+        </Menu>)}
+        {isLargerThan1200 && (
+            <Stack
             spacing={1}
             direction={"row"}
             p={2}
             flex="1"
             justify="flex-end"
+            alignItems="center"
             width="100%"
+            mr={3}
+            
           >
             <Link to="/home">
               <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
@@ -194,11 +186,11 @@ const ComRegister = () => {
             <Link to="/help">
               <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
             </Link>
-          </Stack>
+          </Stack>)}
         </Box>
       </Box>
       <Box display="flex" flexDirection="row">
-        <Box
+      {isLargerThan1200 && (<Box
           h="auto"
           w="50%"
           backgroundImage="https://i.imgur.com/X5w7nmt.png"
@@ -217,9 +209,9 @@ const ComRegister = () => {
           >
             <Image src="https://i.imgur.com/Iyg74x0.png" width="400px" />
           </Box>
-        </Box>
+        </Box>)}
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Box mt="100px">
+          <Box mt="100px" w={isLargerThan1200 ? "auto" : "100vw"}>
             {pagina === 1 && (
               <>
                 <Stack
@@ -765,10 +757,9 @@ const ComRegister = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                w="800px"
+                w={isLargerThan1200 ? "800px" : "100%"}
                 height="100vh"
-                mt="-100px"
-                mb="-50px"
+                mt="-50px"
               >
                 <Stack
                   spacing={2}
@@ -937,7 +928,7 @@ const ComRegister = () => {
                 )}
 
                 {pagina >= 3 && (
-                  <Button type="submit">
+                  <Button type="submit" bg="transparent">
                     <Image
                       width="150px"
                       src="https://i.imgur.com/cWcllqB.png"

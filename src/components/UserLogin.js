@@ -1,14 +1,17 @@
-import { Box, Image, Stack } from "@chakra-ui/react";
+import { Box, Image, Stack, useMediaQuery } from "@chakra-ui/react";
 import axios from "axios";
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/AuthContext";
 import { types } from "../types/types";
 import "../styles/UserLogin.css";
+import { slide as Menu } from 'react-burger-menu';
 
 const URI = "/comapp/login";
 
 const UserLogin = () => {
+  const [isLessThan768] = useMediaQuery('(max-width: 768px)');
+  const [isLargerThan768] = useMediaQuery('(min-width: 769px)');
   const [nombreusuario, setNombreUsuario] = useState("");
   const [contraseña, setContraseña] = useState("");
   const navigate = useNavigate();
@@ -52,7 +55,21 @@ const UserLogin = () => {
         <div className="gobierno-logo-container"></div>
         <div className="logo-app-container"></div>
         <Box h="100px" position="absolute" display="flex" width="100%">
-          <Stack
+        {isLessThan768 && (
+            <Menu
+            >
+              <Link to="/">
+              <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+            </Link>
+            <Link to="/contact">
+              <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+            </Link>
+            <Link to="/help">
+              <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+            </Link>
+            </Menu>
+            )} 
+            {isLargerThan768 && (<Stack
             spacing={1}
             direction={"row"}
             p={2}
@@ -69,11 +86,10 @@ const UserLogin = () => {
             <Link to="/help">
               <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
             </Link>
-          </Stack>
+          </Stack>)}
         </Box>
       </Box>
 
-      <Box className="logo-container" mt="60px"></Box>
       <Box className="login-container-form">
         <form onSubmit={store} className="login-form">
           <h2 id="login-text">Inicia sesión con tu cuenta</h2>
@@ -97,14 +113,7 @@ const UserLogin = () => {
             ></input>
           </div>
           <div className="forgot-password-container">
-            <h2 id="forgot-password-text">
-              <a href="/">¿Olvidaste tu contraseña?</a>
-            </h2>
-          </div>
-          <div className="newregister-text-container">
-            <h2 id="newregister-text">
-              <Link to="/register">¿No posees una cuenta? Regístrate</Link>
-            </h2>
+              <Link to="/register"><h2 id="forgot-password-text">¿No posees una cuenta? Regístrate</h2></Link>
           </div>
           <button className="login-btn" type="submit">
             INICIAR SESIÓN

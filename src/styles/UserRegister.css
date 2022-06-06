@@ -13,13 +13,6 @@
     font-family: Archivo, sans-serif;
 }
 
-.logo-register-container {
-    width: 500px;
-    height: 150px;
-    background-image: url(../assets/comercializacion-logo.png);
-    background-size: contain;
-}
-
 .register-form {
     display: flex;
     flex-direction: column;
@@ -27,9 +20,9 @@
 }
 
 .register-container-form {
-    margin-top: -25px;
-    height: 575px;
-    width: 625px;
+    margin-top: 25px;
+    width: 75vh;
+    height: 70vh;
     border: 2px solid #f7cd00;
     border-radius: 50px 0px;
     display: flex;
@@ -40,16 +33,15 @@
 
 #register-text {
     font-family: conthraxsemibold;
-    margin-right: 390px;
-    margin-bottom: 10px;
-    font-size: 21px;
+    margin-bottom: 25px;
+    font-size: 2em;
 }
 
 .register-input-background {
     margin-left: 20px;
     border: 2px solid #f7cd00;
     border-radius: 25px 0px;
-    width: 550px;
+    width: 600px;
     height: 60px;
     display: flex;
     flex-direction: column;
@@ -83,10 +75,9 @@
 #gologin-text {
     font-family: conthraxsemibold;
     margin-top: -15px;
-    margin-left: 125px;
     margin-bottom: 10px;
-    width: 100%;
     font-size: 24px;
+    color: #f7cd00;
 }
 #gologin-text a {
     font-size: 21px;
@@ -104,4 +95,77 @@
     color: white;
     font-size: 20px;
     border-radius: 25px 0px;
+}
+
+@media (max-width: 1300px) {
+    .register-container-form {
+        margin-top: 5vh;
+        height: 75vh;
+    }
+    .register-input-background {
+        margin-left: 10px;
+        width: 500px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    #gologin-text {
+        margin-top: 15px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .register-container-form {
+        margin-top: 5vh;
+        height: 75vh;
+        width: 600px;
+    }
+    .register-input-background {
+        margin-left: 10px;
+        width: 500px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    #gologin-text {
+        font-size: 18px;
+    }
+}
+@media (max-width: 992px) {	
+    .register-container-form {
+        margin-top: 10vh;
+        height: 80vh;
+        width: auto;
+    }
+    .register-input-background {
+        margin-left: 10px;
+        width: 90%;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    #gologin-text {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .register-container-form {
+        border: none;
+        border-radius: none;
+        width: auto;
+    }
+    .register-input-background {
+        margin-left: 10px;
+        width: 300px;
+        height: 50px;
+        margin-bottom: 20px;
+    }
+    #gologin-text {
+        margin-top: 10px;
+        font-size: 13px;
+        margin-left: 25px;
+    }
+    .register-btn {
+        width: 300px;
+        height: 30px;
+    }
 }

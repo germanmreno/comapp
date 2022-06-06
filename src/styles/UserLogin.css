@@ -21,17 +21,10 @@
     align-items: center;
 }
 
-.logo-container {
-    width: 620px;
-    height: 175px;
-    background-image: url(../assets/comercializacion-logo.png);
-    background-size: contain;
-}
-
 .login-container-form {
-    margin-top: -15px;
-    height: 500px;
-    width: 700px;
+    margin-top: 25px;
+    width: 75vh;
+    height: 60vh;
     border: 2px solid #f7cd00;
     border-radius: 50px 0px;
     background-size: cover;
@@ -57,7 +50,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .login-input-background input {
@@ -76,26 +69,12 @@
 }
 #forgot-password-text {
     font-family: conthraxsemibold;
-    margin-top: -15px;
-    margin-left: 300px;
     margin-bottom: 10px;
-    width: 100%;
     font-size: 24px;
 }
 #forgot-password-text a {
     text-decoration: none;
     color: #f2c627;
-}
-#newregister-text {
-    margin-top: 15px;
-    margin-right: 225px;
-    margin-bottom: 10px;
-    width: 100%;
-}
-#newregister-text a {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
 }
 .login-btn {
     background-color: #1b533d;
@@ -107,4 +86,105 @@
     color: white;
     font-size: 20px;
     border-radius: 25px 0px;;
+}
+
+@media (max-width: 1300px) {
+
+.login-container-form {
+    margin-top: 5vh;
+    height: 75vh;
+}
+
+.login-input-background {
+    margin-left: 10px;
+    width: 550px;
+    height: 70px;
+}
+
+#login-text {
+    font-size: 21px;
+}
+
+#forgot-password-text {
+    font-size: 21px;
+    color: #f2c627;
+}
+
+.login-btn {
+    width: 450px;
+}
+}
+
+@media (max-width: 1200px) {
+    .login-container-form {
+        margin-top: 5vh;
+        height: 75vh;
+        width: 600px;
+    }
+    
+    .login-input-background {
+        margin-left: 10px;
+        width: 500px;
+        height: 60px;
+    }
+    #login-text {
+        font-size: 19px;
+    }
+    #forgot-password-text {
+        font-size: 19px;
+        color: #f2c627;
+    }
+    .login-btn {
+        width: 400px;
+    }
+}
+
+@media (max-width: 992px) {	
+    .login-container-form {
+    margin-top: 10vh;
+    height: 80vh;
+    width: 550px;
+}
+
+.login-input-background {
+    margin-left: 10px;
+    width: 400px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+#login-text {
+    font-size: 19px;
+}
+#forgot-password-text {
+    font-size: 14px;
+}
+
+.login-btn {
+    width: 350px;
+}
+}
+
+@media (max-width: 768px) {
+    .login-container-form {
+        border: none;
+        border-radius: none;
+        width: auto;
+    }
+    .login-input-background {
+        margin-left: 10px;
+        width: 350px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    #login-text {
+        font-size: 21px;
+    }
+    #forgot-password-text {
+        font-size: 14px;
+    }
+    .login-btn {
+        width: 300px;
+    }
+
 }

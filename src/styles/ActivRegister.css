@@ -1,3 +1,5 @@
-.download-link {
-    text-decoration: none;
+@media (max-width: 1200px) {	
+    .bm-burger-bars {
+    background: green;
+    }
 }

@@ -3,14 +3,17 @@ import { useEffect, useState } from "react";
 import "../styles/UserLogin.css";
 import Loading from "./Loading";
 import "../styles/ComApp.css";
-import { Box, Heading, Image, Stack } from "@chakra-ui/react";
+import { Box, Heading, Image, Stack, useMediaQuery } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { slide as Menu } from 'react-burger-menu';
 
-const URI = "http://localhost:8000/comapp/";
+const URI = "/comapp/";
 
 const ComApp = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [isLessThan768] = useMediaQuery('(max-width: 768px)');
+  const [isLargerThan768] = useMediaQuery('(min-width: 769px)');
 
   //Procedimiento guardar
   const store = async (e) => {
@@ -50,7 +53,24 @@ const ComApp = () => {
             display="flex"
             width="100%"
           >
-            <Stack
+            {isLessThan768 && (
+            <Menu
+            >
+              <Link to="/">
+                <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+              </Link>
+              <Link to="/register">
+                <Image src="https://i.imgur.com/8NAKakM.png" height="80px" />
+              </Link>
+              <Link to="/contact">
+                <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+              </Link>
+              <Link to="/help">
+                <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+              </Link>
+            </Menu>
+            )} 
+            {isLargerThan768 && (<Stack
               spacing={1}
               direction={"row"}
               p={2}
@@ -70,7 +90,8 @@ const ComApp = () => {
               <Link to="/help">
                 <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
               </Link>
-            </Stack>
+            </Stack>) }
+            
           </Box>
           <Box
             display="flex"
@@ -81,12 +102,13 @@ const ComApp = () => {
           >
             <Image
               src="https://i.imgur.com/Iyg74x0.png"
-              width="800px"
+              width="70%"
               justify="flex-start"
+              id="renacovem-img"
             />
           </Box>
           <Box display="flex" width="100%" mt="0">
-            <Heading ml="300px" color="#fcd72b">
+            <Heading id="title-home" color="#fcd72b">
               Registro Nacional de <br /> Compradores y Vendedores de <br />{" "}
               Minerales
             </Heading>

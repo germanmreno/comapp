@@ -7,7 +7,7 @@ function Loading() {
   return (
     <div className="divPadre">
       <div className="divHijo">
-        <div className="logo-container"></div>
+        <div className="logo-loading-container"></div>
         <Spinner color="light" />
       </div>
     </div>

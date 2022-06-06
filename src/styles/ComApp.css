@@ -30,13 +30,131 @@
 }
 
 .gobierno-logo-container {
-    width: 125px;
+    width: 145px;
     background-image: url(../assets/logo-gobierno.png);
     background-size: cover;
 }
 
 .logo-app-container {
-    width: 350px;
+    width: 390px;
     background-image: url(../assets/comercializacion-logo.png);
     background-size: cover;
+}
+#title-home {
+    margin-left: 300px;
+}
+
+@media (max-width: 1200px) {
+	/* #renacovem-img {
+        width: 600px;
+    } */
+    #title-home {
+        margin-left: 200px;
+    }
+}
+@media (max-width: 992px) {	
+    /* #renacovem-img {
+        width: 400px;
+    } */
+    #title-home {
+        margin-left: 100px;
+    }
+
+}
+@media (max-width: 768px) {
+    .gobierno-logo-container {
+        width: 165px;
+        background-image: url(../assets/logo-gobierno.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .logo-app-container {
+        width: 300px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .app-background {
+        background-position: left;
+    }
+    
+    
+/* Position and sizing of burger button */
+
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    right: 36px;
+    top: 125px;
+  }
+  
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: white;
+  }
+  
+  /* Color/shape of burger icon bars on hover*/
+  .bm-burger-bars-hover {
+    background: #fcd72b;
+  }
+  
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+  
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: #bdc3c7;
+  }
+  
+  /*
+  Sidebar wrapper styles
+  Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+  */
+  .bm-menu-wrap {
+    position: relative;
+    top: 0;
+    height: 100%;
+  }
+  
+  /* General sidebar styles */
+  .bm-menu {
+    background: black;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+  }
+  
+  /* Morph shape necessary with bubble or elastic */
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+  
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
+  }
+  
+  /* Individual item */
+  .bm-item {
+    display: inline-block;
+  }
+  
+  /* Styling of overlay */
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  #renacovem-img {
+      width: 500px;
+  }
+
+  #title-home {
+    margin-left: 50px;
+}
+
 }

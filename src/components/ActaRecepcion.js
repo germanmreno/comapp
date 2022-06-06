@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import "../styles/ActivRegister.css";
 
-import { Box, Image, Input, Stack, Text, Button, Tag } from "@chakra-ui/react";
+import { Box, Image, Input, Stack, Text, Button, Tag, useMediaQuery } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Label } from "reactstrap";
+import { slide as Menu } from 'react-burger-menu';
+import "../styles/ActaRecepcion.css"
 
 const URI = "/comapp/actarecepcion";
 
 const ActaRecepcion = () => {
+  const [isLessThan1200] = useMediaQuery('(max-width: 1200px)');
   const [file, setFile] = useState("");
   const [filename, setFileName] = useState("Elija un archivo.");
   const [uploadedFile, setUploadedFile] = useState({});
@@ -54,15 +57,9 @@ const ActaRecepcion = () => {
         <div className="gobierno-logo-container"></div>
         <div className="logo-app-container"></div>
         <Box h="100px" position="absolute" display="flex" width="100%">
-          <Stack
-            spacing={1}
-            direction={"row"}
-            p={2}
-            flex="1"
-            justify="flex-end"
-            width="100%"
-          >
-            <Link to="/home">
+        {isLessThan1200 && (
+        <Menu id="home-menu">
+          <Link to="/">
               <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
             </Link>
             <Link to="/contact">
@@ -71,11 +68,31 @@ const ActaRecepcion = () => {
             <Link to="/help">
               <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
             </Link>
-          </Stack>
+        </Menu>)}
+          {!isLessThan1200 && (
+            <Stack
+            spacing={1}
+            direction={"row"}
+            p={2}
+            flex="1"
+            justify="flex-end"
+            width="100%"
+          >
+            <Link to="/">
+              <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+            </Link>
+            <Link to="/contact">
+              <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+            </Link>
+            <Link to="/help">
+              <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+            </Link>
+            
+          </Stack>)} 
         </Box>
       </Box>
       <Box display="flex" flexDirection="row">
-        <Box
+      {!isLessThan1200 && (<Box
           h="100vh"
           w="50%"
           backgroundImage="https://i.imgur.com/DYE4aEq.png"
@@ -94,13 +111,13 @@ const ActaRecepcion = () => {
           >
             <Image src="https://i.imgur.com/Iyg74x0.png" width="400px" />
           </Box>
-        </Box>
+        </Box>)}
         <Box mt={100}>
           <Box
             display="flex"
             alignItems="center"
             justifyContent="center"
-            w="800px"
+            w={!isLessThan1200 ? "800px" : "100vw"}
             height="100vh"
             mt="-100px"
             mb="-50px"

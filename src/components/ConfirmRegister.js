@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../auth/AuthContext";
 import axios from "axios";
+import { slide as Menu } from 'react-burger-menu';
 
-import { Box, Image, Stack, Text } from "@chakra-ui/react";
+import { Box, Image, Stack, Text, useMediaQuery } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 import "../styles/ConfirmRegister.css";
@@ -10,6 +11,8 @@ import "../styles/ConfirmRegister.css";
 const URI = "/comapp/confirmregister";
 
 const ConfirmRegister = () => {
+  const [isLessThan1024] = useMediaQuery('(max-width: 1024px)');
+  const [isLargerThan1024] = useMediaQuery('(min-width: 1025px)');
   const {
     user: { jwt },
   } = useContext(AuthContext);
@@ -33,7 +36,21 @@ const ConfirmRegister = () => {
         <div className="gobierno-logo-container"></div>
         <div className="logo-app-container"></div>
         <Box h="100px" position="absolute" display="flex" width="100%">
-          <Stack
+        {isLessThan1024 && (
+            <Menu id="burguer-menu"
+            >
+              <Link to="/home">
+              <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+            </Link>
+            <Link to="/contact">
+              <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+            </Link>
+            <Link to="/help">
+              <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+            </Link>
+            </Menu>
+            )} 
+            {isLargerThan1024 && (<Stack
             spacing={1}
             direction={"row"}
             p={2}
@@ -50,7 +67,7 @@ const ConfirmRegister = () => {
             <Link to="/help">
               <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
             </Link>
-          </Stack>
+          </Stack>)}
         </Box>
       </Box>
       <Box display="flex" flexDirection="row">
@@ -75,7 +92,7 @@ const ConfirmRegister = () => {
               <Box display="flex" alignItems="center">
                 <Text
                   color="#f7cd00"
-                  fontSize="18px"
+                  fontSize={isLargerThan1024 ? "18px" : "13px"}
                   fontFamily="Archivo"
                   align="Center"
                 >
@@ -91,30 +108,33 @@ const ConfirmRegister = () => {
                     fontFamily="conthraxsemibold"
                     textAlign="left"
                     color="#f7cd00"
+                    fontSize={isLargerThan1024 ? "18px" : "13px"}
                   >
                     Nº de Registro:
                   </Text>
-                  <Text fontFamily="conthraxsemibold">{data.numregistro}</Text>
+                  <Text fontFamily="conthraxsemibold" fontSize={isLargerThan1024 ? "18px" : "13px"}>{data.numregistro}</Text>
                 </Stack>
                 <Stack direction={"column"} p={2}>
                   <Text
                     fontFamily="conthraxsemibold"
                     textAlign="left"
                     color="#f7cd00"
+                    fontSize={isLargerThan1024 ? "18px" : "13px"}
                   >
                     Nombre de la Empresa:
                   </Text>
-                  <Text fontFamily="conthraxsemibold">{data.nombre}</Text>
+                  <Text fontSize={isLargerThan1024 ? "18px" : "13px"} fontFamily="conthraxsemibold">{data.nombre}</Text>
                 </Stack>
                 <Stack direction={"column"} p={2}>
                   <Text
                     fontFamily="conthraxsemibold"
                     textAlign="left"
                     color="#f7cd00"
+                    fontSize={isLargerThan1024 ? "18px" : "13px"}
                   >
                     Objeto:
                   </Text>
-                  <Text fontFamily="conthraxsemibold">
+                  <Text fontFamily="conthraxsemibold" fontSize={isLargerThan1024 ? "18px" : "13px"}>
                     {data.tipoactividad}
                   </Text>
                 </Stack>
@@ -122,11 +142,11 @@ const ConfirmRegister = () => {
                   <Text
                     fontFamily="conthraxsemibold"
                     textAlign="left"
-                    color="#f7cd00"
+                    color="#f7cd00" fontSize={isLargerThan1024 ? "18px" : "13px"}
                   >
                     Mineral:
                   </Text>
-                  <Text fontFamily="conthraxsemibold">
+                  <Text fontFamily="conthraxsemibold" fontSize={isLargerThan1024 ? "18px" : "13px"}>
                     {data.actividadminera}
                   </Text>
                 </Stack>
@@ -134,21 +154,21 @@ const ConfirmRegister = () => {
                   <Text
                     fontFamily="conthraxsemibold"
                     textAlign="left"
-                    color="#f7cd00"
+                    color="#f7cd00" fontSize={isLargerThan1024 ? "18px" : "13px"}
                   >
                     Status:
                   </Text>
-                  <Text fontFamily="conthraxsemibold">Registrado</Text>
+                  <Text fontFamily="conthraxsemibold" fontSize={isLargerThan1024 ? "18px" : "13px"}>Registrado</Text>
                 </Stack>
                 <Stack direction={"column"} p={3}>
                   <Text
                     fontFamily="conthraxsemibold"
                     textAlign="left"
-                    color="#f7cd00"
+                    color="#f7cd00" fontSize={isLargerThan1024 ? "18px" : "13px"}
                   >
                     Fecha:
                   </Text>
-                  <Text fontFamily="conthraxsemibold">{data.createdAt}</Text>
+                  <Text fontFamily="conthraxsemibold" fontSize={isLargerThan1024 ? "18px" : "13px"}>{data.createdAt}</Text>
                 </Stack>
               </Box>
             </Box>

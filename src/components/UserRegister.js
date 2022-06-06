@@ -2,11 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import "../styles/UserRegister.css";
-import { Box, Image, Stack } from "@chakra-ui/react";
+import { Box, Image, Stack, useMediaQuery } from "@chakra-ui/react";
+import { slide as Menu } from 'react-burger-menu';
 
 const URI = "/comapp/register";
 
 const UserRegister = () => {
+  const [isLessThan768] = useMediaQuery('(max-width: 768px)');
+  const [isLargerThan768] = useMediaQuery('(min-width: 769px)');
   const [nombreusuario, setNombreUsuario] = useState("");
   const [contraseña, setContraseña] = useState("");
   const [contraseña2, setContraseña2] = useState("");
@@ -43,7 +46,21 @@ const UserRegister = () => {
         <div className="gobierno-logo-container"></div>
         <div className="logo-app-container"></div>
         <Box h="100px" position="absolute" display="flex" width="100%">
-          <Stack
+        {isLessThan768 && (
+            <Menu
+            >
+              <Link to="/">
+                <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+              </Link>
+              <Link to="/contact">
+                <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+              </Link>
+              <Link to="/help">
+                <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+              </Link>
+            </Menu>
+            )} 
+            {isLargerThan768 && (<Stack
             spacing={1}
             direction={"row"}
             p={2}
@@ -52,21 +69,20 @@ const UserRegister = () => {
             width="100%"
           >
             <Link to="/">
-              <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
-            </Link>
-            <Link to="/contact">
-              <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
-            </Link>
-            <Link to="/help">
-              <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
-            </Link>
-          </Stack>
+                <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+              </Link>
+              <Link to="/contact">
+                <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+              </Link>
+              <Link to="/help">
+                <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+              </Link>
+          </Stack>)}
         </Box>
       </Box>
-      <Box className="logo-register-container" mt="100px"></Box>
       <Box className="register-container-form">
         <form onSubmit={store} className="register-form">
-          <h2 id="login-text">Regístrate</h2>
+          <h2 id="register-text">Regístrate</h2>
           <div className="register-input-background">
             <input
               placeholder="Nombre de usuario"
@@ -113,9 +129,7 @@ const UserRegister = () => {
             ></input>
           </div>
           <div className="gologin-text-container">
-            <h2 id="gologin-text">
-              <Link to="/login">¿Posees ya una cuenta? Inicia sesión</Link>
-            </h2>
+              <Link to="/login"><h2 id="gologin-text">¿Posees ya una cuenta? Inicia sesión</h2></Link>
           </div>
           <button className="register-btn" type="submit">
             REGISTRAR

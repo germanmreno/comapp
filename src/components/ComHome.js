@@ -1,14 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../auth/AuthContext";
 
-import { Box, Image, Stack } from "@chakra-ui/react";
+import { Box, Image, Stack, useMediaQuery } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { types } from "../types/types";
+import { slide as Menu } from 'react-burger-menu';
 import axios from "axios";
+import "../styles/ComHome.css";
 
 const URI = "/comapp/home";
 
 const ComHome = () => {
+  const [isLessThan1200] = useMediaQuery('(max-width: 1200px)');
+  const [isLargerThan1200] = useMediaQuery('(min-width: 1201px)');
   const {
     user: { jwt },
   } = useContext(AuthContext);
@@ -30,28 +34,19 @@ const ComHome = () => {
 
   return (
     <>
-      <Box className="header-app" position="fixed" top="0">
+      <Box className="header-app" position="fixed" top="0" >
         <div className="gobierno-logo-container"></div>
         <div className="logo-app-container"></div>
         <Box h="100px" position="absolute" display="flex" width="100%">
-          <Stack
-            spacing={1}
-            direction={"row"}
-            p={2}
-            flex="1"
-            justify="flex-end"
-            alignItems="center"
-            width="100%"
-            mr={3}
-          >
-            <Link to="/home">
-              <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+        {isLessThan1200 && (
+        <Menu id="home-menu"><Link to="/home">
+              <Image src="https://i.imgur.com/GKDwIhR.png" height="5em" />
             </Link>
             <Link to="/contact">
-              <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+              <Image src="https://i.imgur.com/ruTDdtu.png" height="5em" />
             </Link>
             <Link to="/help">
-              <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+              <Image src="https://i.imgur.com/LBmBrKC.png" height="5em" />
             </Link>
             <Link
               to="/"
@@ -61,13 +56,47 @@ const ComHome = () => {
                 })
               }
             >
-              <Image src="https://i.imgur.com/pmn7y45.png" height="40px" />
+              <Image src="https://i.imgur.com/pmn7y45.png" ml="18px" height="3em"/>
             </Link>
-          </Stack>
+            </Menu>)
+          }
+          {isLargerThan1200 && (
+            <Stack
+            spacing={1}
+            direction={"row"}
+            p={2}
+            flex="1"
+            justify="flex-end"
+            alignItems="center"
+            width="100%"
+            mr={3}
+            
+          >
+            <Link to="/home">
+              <Image src="https://i.imgur.com/GKDwIhR.png" height="5em" />
+            </Link>
+            <Link to="/contact">
+              <Image src="https://i.imgur.com/ruTDdtu.png" height="5em" />
+            </Link>
+            <Link to="/help">
+              <Image src="https://i.imgur.com/LBmBrKC.png" height="5em" />
+            </Link>
+            <Link
+              to="/"
+              onClick={() =>
+                dispatch({
+                  type: types.logout,
+                })
+              }
+            >
+              <Image src="https://i.imgur.com/pmn7y45.png" height="3em" />
+            </Link>
+          </Stack>)}
         </Box>
       </Box>
+      
       <Box display="flex" flexDirection="row">
-        <Box
+      {isLargerThan1200 && (<Box
           h="100vh"
           w="50%"
           backgroundImage="https://i.imgur.com/DYE4aEq.png"
@@ -75,6 +104,7 @@ const ComHome = () => {
           backgroundRepeat="no-repeat"
           bgSize="cover"
         >
+          
           <Box
             display="flex"
             width="100%"
@@ -86,14 +116,33 @@ const ComHome = () => {
           >
             <Image src="https://i.imgur.com/Iyg74x0.png" width="400px" />
           </Box>
-        </Box>
+        </Box>)}
         <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
-          w="50%"
+          w={isLargerThan1200 ? "50%" : "100%"}
           flexDirection="column"
+          id="home-items-container"
         >
+          {isLessThan1200 && (
+            <Box
+            display="flex"
+            width="100%"
+            mb="0"
+            flex-direction="column"
+            justifyContent="center"
+            alignItems="center"
+            height="30vh"
+            backgroundImage="https://i.imgur.com/DYE4aEq.png"
+            backgroundPosition="top"
+            backgroundSize="cover"
+            backgroundRepeat="no-repeat"
+            mt="100px"
+          >
+            <Image src="https://i.imgur.com/Iyg74x0.png" width="300px"/>
+          </Box>
+          )}
           {authComRegister && (
             <Stack
               mt={-2}

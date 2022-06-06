@@ -15,3 +15,17 @@
 .certificate-text {
     font-family: conthraxsemibold;
 }
+
+@media (max-width: 768px) {
+    .bm-burger-bars {
+        background: white;
+      }
+
+      .certificate-register {
+        width: 450px;
+    }
+    .certificate-text {
+        font-size: 14px;
+    }
+}
+

@@ -141,7 +141,7 @@ const ActivRegister = () => {
             >
               <Image src="https://i.imgur.com/SVrAvJi.png" width="50px" />
               <a
-                href="https://docs.google.com/spreadsheets/d/1mH8lOt8rXReeFNM4Pp56qvsdTwVdc5LM/edit#gid=1308679990"
+                href="https://drive.google.com/uc?id=1mH8lOt8rXReeFNM4Pp56qvsdTwVdc5LM&export=download"
                 target="_blank"
               >
                 <Text color="green">

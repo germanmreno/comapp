@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { slide as Menu } from 'react-burger-menu';
+import { Label } from "reactstrap";
 
 import {
   Box,
@@ -31,6 +32,15 @@ const ComRegister = () => {
   const {
     user: { jwt },
   } = useContext(AuthContext);
+  const [file, setFile] = useState("");
+  const [filename, setFileName] = useState("Elija un archivo.");
+  const [uploadedFile, setUploadedFile] = useState({});
+
+  const onChange = (e) => {
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+    console.log(file);
+  };
 
   const onSubmit = async (data) => {
     const {
@@ -61,6 +71,31 @@ const ComRegister = () => {
       promedioganancia,
       porcentajecompra,
     } = data;
+
+    if (!file) return alert("No ha adjuntado ningún archivo.");
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await axios.post("/comapp/actarecepcion", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const { fileName, filePath } = res.data;
+
+      setUploadedFile({ fileName, filePath });
+      alert("Archivo subido de forma exitosa.");
+      setFile("");
+      setFileName("Elija un archivo");
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.log("There was a problem with the server");
+      } else {
+        console.log(err.response.data.msg);
+      }
+    }
 
       await axios
       .post(URI, {
@@ -775,14 +810,29 @@ const ComRegister = () => {
                     alignItems="center"
                     justifyContent="center"
                   >
+                    <Label for="actaconstitutiva">
                     <Image
+                      cursor="pointer"
                       src="https://i.imgur.com/Ss8MqbE.png"
                       height="80px"
                     ></Image>
-                    <Image
-                      src="https://i.imgur.com/T6iLjuH.png"
-                      width="80px"
-                    ></Image>
+                  </Label>
+                  <Input
+                    type="file"
+                    name="actaconstitutiva"
+                    id="actaconstitutiva"
+                    onChange={onChange}
+                    width="0.1px"
+                    height="0.1px"
+                    opacity={0}
+                    overflow="hidden"
+                    position="absolute"
+                    z-index="-1"
+                  />
+                  <Image
+                    src="https://i.imgur.com/T6iLjuH.png"
+                    width="80px"
+                  ></Image>
                     <Text fontFamily="Archivo" w="200px">
                       ACTA CONSTITUTIVA
                     </Text>
@@ -794,14 +844,29 @@ const ComRegister = () => {
                     alignItems="center"
                     justifyContent="center"
                   >
+                    <Label for="rifempresa">
                     <Image
+                      cursor="pointer"
                       src="https://i.imgur.com/Ss8MqbE.png"
                       height="80px"
                     ></Image>
-                    <Image
-                      src="https://i.imgur.com/T6iLjuH.png"
-                      width="80px"
-                    ></Image>
+                  </Label>
+                  <Input
+                    type="file"
+                    name="rifempresa"
+                    id="rifempresa"
+                    onChange={onChange}
+                    width="0.1px"
+                    height="0.1px"
+                    opacity={0}
+                    overflow="hidden"
+                    position="absolute"
+                    z-index="-1"
+                  />
+                  <Image
+                    src="https://i.imgur.com/T6iLjuH.png"
+                    width="80px"
+                  ></Image>
                     <Text fontFamily="Archivo" w="200px">
                       RIF EMPRESA
                     </Text>
@@ -813,14 +878,29 @@ const ComRegister = () => {
                     alignItems="center"
                     justifyContent="center"
                   >
+                    <Label for="cedulayrif">
                     <Image
+                      cursor="pointer"
                       src="https://i.imgur.com/Ss8MqbE.png"
                       height="80px"
                     ></Image>
-                    <Image
-                      src="https://i.imgur.com/T6iLjuH.png"
-                      width="80px"
-                    ></Image>
+                  </Label>
+                  <Input
+                    type="file"
+                    name="cedulayrif"
+                    id="cedulayrif"
+                    onChange={onChange}
+                    width="0.1px"
+                    height="0.1px"
+                    opacity={0}
+                    overflow="hidden"
+                    position="absolute"
+                    z-index="-1"
+                  />
+                  <Image
+                    src="https://i.imgur.com/T6iLjuH.png"
+                    width="80px"
+                  ></Image>
                     <Text fontFamily="Archivo" w="200px">
                       CÉDULA DE IDENTIDAD Y RIF DE ACCIONISTA
                     </Text>
@@ -832,14 +912,29 @@ const ComRegister = () => {
                     alignItems="center"
                     justifyContent="center"
                   >
+                    <Label for="curriculumvitae">
                     <Image
+                      cursor="pointer"
                       src="https://i.imgur.com/Ss8MqbE.png"
                       height="80px"
                     ></Image>
-                    <Image
-                      src="https://i.imgur.com/T6iLjuH.png"
-                      width="80px"
-                    ></Image>
+                  </Label>
+                  <Input
+                    type="file"
+                    name="curriculumvitae"
+                    id="curriculumvitae"
+                    onChange={onChange}
+                    width="0.1px"
+                    height="0.1px"
+                    opacity={0}
+                    overflow="hidden"
+                    position="absolute"
+                    z-index="-1"
+                  />
+                  <Image
+                    src="https://i.imgur.com/T6iLjuH.png"
+                    width="80px"
+                  ></Image>
                     <Text fontFamily="Archivo" w="200px">
                       CURRICULUM VITAE DE LOS PARTICIPANTES
                     </Text>
@@ -851,14 +946,29 @@ const ComRegister = () => {
                     alignItems="center"
                     justifyContent="center"
                   >
+                    <Label for="declaracionjuridica">
                     <Image
+                      cursor="pointer"
                       src="https://i.imgur.com/Ss8MqbE.png"
                       height="80px"
                     ></Image>
-                    <Image
-                      src="https://i.imgur.com/T6iLjuH.png"
-                      width="80px"
-                    ></Image>
+                  </Label>
+                  <Input
+                    type="file"
+                    name="declaracionjuridica"
+                    id="declaracionjuridica"
+                    onChange={onChange}
+                    width="0.1px"
+                    height="0.1px"
+                    opacity={0}
+                    overflow="hidden"
+                    position="absolute"
+                    z-index="-1"
+                  />
+                  <Image
+                    src="https://i.imgur.com/T6iLjuH.png"
+                    width="80px"
+                  ></Image>
                     <Text fontFamily="Archivo" w="200px">
                       DECLARACIÓN JURADA DE ORIGEN
                     </Text>
@@ -870,14 +980,29 @@ const ComRegister = () => {
                     alignItems="center"
                     justifyContent="center"
                   >
+                    <Label for="antecedentespenales">
                     <Image
+                      cursor="pointer"
                       src="https://i.imgur.com/Ss8MqbE.png"
                       height="80px"
                     ></Image>
-                    <Image
-                      src="https://i.imgur.com/T6iLjuH.png"
-                      width="80px"
-                    ></Image>
+                  </Label>
+                  <Input
+                    type="file"
+                    name="antecedentespenales"
+                    id="antecedentespenales"
+                    onChange={onChange}
+                    width="0.1px"
+                    height="0.1px"
+                    opacity={0}
+                    overflow="hidden"
+                    position="absolute"
+                    z-index="-1"
+                  />
+                  <Image
+                    src="https://i.imgur.com/T6iLjuH.png"
+                    width="80px"
+                  ></Image>
                     <Text fontFamily="Archivo" w="200px">
                       ANTECEDENTES PENALES
                     </Text>

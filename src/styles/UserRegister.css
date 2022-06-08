@@ -97,6 +97,14 @@
     border-radius: 25px 0px;
 }
 
+@media (min-width: 1301px) {
+    .register-container-form {
+        margin-top: 5vh;
+        height: 75vh;
+        width: 800px;
+    }
+}
+
 @media (max-width: 1300px) {
     .register-container-form {
         margin-top: 5vh;

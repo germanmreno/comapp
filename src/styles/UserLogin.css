@@ -88,6 +88,14 @@
     border-radius: 25px 0px;;
 }
 
+@media (min-width: 1301px) {
+    .login-container-form {
+        margin-top: 5vh;
+        height: 75vh;
+        width: 725px;
+    }
+}
+
 @media (max-width: 1300px) {
 
 .login-container-form {

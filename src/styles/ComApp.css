@@ -44,10 +44,17 @@
     margin-left: 300px;
 }
 
+@media (min-width: 1201px) {
+#renacovem-img {
+        width: 50%;
+    } 
+
+}
+
 @media (max-width: 1200px) {
-	/* #renacovem-img {
-        width: 600px;
-    } */
+	#renacovem-img {
+        width: 40%;
+    } 
     #title-home {
         margin-left: 200px;
     }

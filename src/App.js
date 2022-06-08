@@ -48,15 +48,14 @@ function App() {
             <Route path="/home" element={<ComHome />} />
             <Route path="/comregister" element={<ComRegister />} />
             <Route path="/confirmregister" element={<ConfirmRegister />} />
-            <Route path="/certificate" element={<Certificate />} />
             <Route path="/activregister" element={<ActivRegister />} />
             <Route path="/analisisregister" element={<AnalisisRegister />} />
+            <Route path="/certificate" element={<Certificate />} />
           </Route>
           <Route path="/actarecepcion" element={<ActaRecepcion />} />
           <Route element={<RolConfirm />}>
             <Route path="/companies" element={<Companies />} />
           </Route>
-
           <Route path="/contact" element={<Contact />} />
           <Route path="/help" element={<Help />} />
           <Route path="*" element={<Navigate replace to="/" />} />

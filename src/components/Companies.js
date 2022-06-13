@@ -1,4 +1,4 @@
-import { Box, Image, Stack } from "@chakra-ui/react";
+import { Box, Button, Image, Stack } from "@chakra-ui/react";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
@@ -52,28 +52,15 @@ export const Companies = () => {
         </Box>
       </Box>
       <Box display="flex" flexDirection="row">
-        <Box
-          h="100vh"
-          w="30%"
-          backgroundImage="https://i.imgur.com/DYE4aEq.png"
-          bgPosition="right"
-          backgroundRepeat="no-repeat"
-          bgSize="cover"
-        >
+        <Box mt={150}>
           <Box
             display="flex"
-            width="100%"
-            height="600px"
-            mb="0"
-            flex-direction="column"
-            justifyContent="flex-start"
+            w="100%"
+            height="auto"
+            justifyContent="center"
             alignItems="center"
+            ml="100px"
           >
-            <Image src="https://i.imgur.com/Iyg74x0.png" width="400px" />
-          </Box>
-        </Box>
-        <Box mt={100}>
-          <Box display="flex" w="1000px" height="auto" mt="40px">
             <div className="container">
               <div className="row">
                 <div className="col">
@@ -109,7 +96,7 @@ export const Companies = () => {
                               to={`/companies/${company.guid}`}
                               className="btn btn-info"
                             >
-                              Verificar
+                              Ver más
                             </Link>
                           </td>
                         </tr>

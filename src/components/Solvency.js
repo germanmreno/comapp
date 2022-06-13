@@ -3,17 +3,18 @@ import React, { useContext, useEffect, useState } from "react";
 import { Box, Image, Stack, useMediaQuery } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
-import DocumentCertificate from "./DocumentCertificate";
 import { PDFViewer } from "@react-pdf/renderer";
 import { QRCodeCanvas } from "qrcode.react";
 import "../styles/Certificate.css";
 import axios from "axios";
 import { AuthContext } from "../auth/AuthContext";
+import DocumentSolvency from "./DocumentSolvency";
+import moment from "moment";
 
 const URI = "/comapp/certificate";
 const URL = "http://renacovem.cvm.com.ve/company/";
 
-const Certificate = () => {
+const Solvency = () => {
   const [isLessThan1024] = useMediaQuery("(max-width: 1024px)");
   const [QRCodeString, setQRCodeString] = useState();
 
@@ -121,14 +122,13 @@ const Certificate = () => {
           >
             {QRCodeString && (
               <PDFViewer width={1500} height={500}>
-                <DocumentCertificate
+                <DocumentSolvency
                   nombre={data.nombre}
                   representante={data.representante}
-                  inscripcion={data.createdAt}
-                  guid={data.guid}
-                  fechaverificado={data.fechaverificado}
-                  fechafinverificado={data.fechafinverificado}
+                  cedula={data.cedularepresentante}
                   image={QRCodeString}
+                  mes={moment().format("MMMM")}
+                  anio={moment().year()}
                 />
               </PDFViewer>
             )}
@@ -161,4 +161,4 @@ const Certificate = () => {
   );
 };
 
-export default Certificate;
+export default Solvency;

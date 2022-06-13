@@ -19,6 +19,8 @@ import AuthConfirm from "./components/AuthConfirm";
 import ActaRecepcion from "./components/ActaRecepcion";
 import { Companies } from "./components/Companies";
 import RolConfirm from "./components/RolConfirm";
+import { Company } from "./components/Company";
+import Solvency from "./components/Solvency";
 
 const init = () => {
   return JSON.parse(localStorage.getItem("user")) || { logged: false };
@@ -45,17 +47,19 @@ function App() {
             <Route path="/register" element={<UserRegister />} />
           </Route>
           <Route element={<RequireAuth />}>
+            <Route path="/certificate" element={<Certificate />} />
             <Route path="/home" element={<ComHome />} />
             <Route path="/comregister" element={<ComRegister />} />
             <Route path="/confirmregister" element={<ConfirmRegister />} />
             <Route path="/activregister" element={<ActivRegister />} />
             <Route path="/analisisregister" element={<AnalisisRegister />} />
-            <Route path="/certificate" element={<Certificate />} />
+            <Route path="/actarecepcion" element={<ActaRecepcion />} />
           </Route>
-          <Route path="/actarecepcion" element={<ActaRecepcion />} />
           <Route element={<RolConfirm />}>
             <Route path="/companies" element={<Companies />} />
           </Route>
+          <Route path="/solvency" element={<Solvency />} />
+          <Route path="/companies/:id" element={<Company />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/help" element={<Help />} />
           <Route path="*" element={<Navigate replace to="/" />} />

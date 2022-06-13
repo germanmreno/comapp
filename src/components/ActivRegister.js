@@ -13,14 +13,14 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { slide as Menu } from 'react-burger-menu';
+import { slide as Menu } from "react-burger-menu";
 import { Label } from "reactstrap";
-import "../styles/ActivRegister.css"
+import "../styles/ActivRegister.css";
 
 const URI = "/comapp/activregister";
 
 const ActivRegister = () => {
-  const [isLessThan1200] = useMediaQuery('(max-width: 1200px)');
+  const [isLessThan1200] = useMediaQuery("(max-width: 1200px)");
   const [file, setFile] = useState("");
   const [filename, setFileName] = useState("Choose file");
   const [uploadedFile, setUploadedFile] = useState({});
@@ -61,64 +61,71 @@ const ActivRegister = () => {
         <div className="gobierno-logo-container"></div>
         <div className="logo-app-container"></div>
         <Box h="100px" position="absolute" display="flex" width="100%">
-        {isLessThan1200 && (
-        <Menu id="activregister-menu">
-          <Link to="/homeauth">
-            <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
-          </Link>
-          <Link to="/contact">
-            <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
-          </Link>
-          <Link to="/help">
-            <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
-          </Link>
-        </Menu>)}
+          {isLessThan1200 && (
+            <Menu id="activregister-menu">
+              <Link to="/homeauth">
+                <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+              </Link>
+              <Link to="/contact">
+                <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+              </Link>
+              <Link to="/help">
+                <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+              </Link>
+            </Menu>
+          )}
           {!isLessThan1200 && (
             <Stack
-            spacing={1}
-            direction={"row"}
-            p={2}
-            flex="1"
-            justify="flex-end"
-            alignItems="center"
-            width="100%"
-            mr={3}
-            
-          >
-            <Link to="/homeauth">
-              <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
-            </Link>
-            <Link to="/contact">
-              <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
-            </Link>
-            <Link to="/help">
-              <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
-            </Link>
-          </Stack>)}
+              spacing={1}
+              direction={"row"}
+              p={2}
+              flex="1"
+              justify="flex-end"
+              alignItems="center"
+              width="100%"
+              mr={3}
+            >
+              <Link to="/homeauth">
+                <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+              </Link>
+              <Link to="/contact">
+                <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+              </Link>
+              <Link to="/help">
+                <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+              </Link>
+            </Stack>
+          )}
         </Box>
       </Box>
       <Box display="flex" flexDirection="row">
-      {!isLessThan1200 && (<Box
-          h="100vh"
-          w="50%"
-          backgroundImage="https://i.imgur.com/DYE4aEq.png"
-          bgPosition="right"
-          backgroundRepeat="no-repeat"
-          bgSize="cover"
-        >
+        {!isLessThan1200 && (
           <Box
-            display="flex"
-            width="100%"
-            height="600px"
-            mb="0"
-            flex-direction="column"
-            justifyContent="flex-start"
-            alignItems="center"
+            h="100%"
+            w="50%"
+            backgroundImage="https://i.imgur.com/DYE4aEq.png"
+            bgPosition="right"
+            backgroundRepeat="no-repeat"
+            bgSize="cover"
           >
-            <Image src="https://i.imgur.com/Iyg74x0.png" width="400px" />
+            <Box
+              display="flex"
+              width="100%"
+              height="600px"
+              mb="0"
+              flex-direction="column"
+              justifyContent="flex-start"
+              alignItems="center"
+            >
+              <Image src="https://i.imgur.com/Iyg74x0.png" width="400px" />
+            </Box>
           </Box>
-        </Box>)}
-        <Box display="flex" w={!isLessThan1200 ? "50%" : "100%"} flexDirection="column" >
+        )}
+        <Box
+          display="flex"
+          w={!isLessThan1200 ? "50%" : "100%"}
+          flexDirection="column"
+        >
           <Stack mt={-2} spacing={4} direction={"column"} p={3} flex="1">
             <Heading
               fontSize="24px"
@@ -168,29 +175,29 @@ const ActivRegister = () => {
                 <Link to="/home">
                   <Image
                     src="https://i.imgur.com/R3DQi40.png"
-                    width="200px"
+                    width="150px"
                     cursor="pointer"
                   />
                 </Link>
                 <Label for="cargararchivo">
-                    <Image
-                      cursor="pointer"
-                      src="https://i.imgur.com/Ss8MqbE.png"
-                      height="75px"
-                    ></Image>
-                  </Label>
-                  <Input
-                    type="file"
-                    name="cargararchivo"
-                    id="cargararchivo"
-                    onChange={onChange}
-                    width="0.1px"
-                    height="0.1px"
-                    opacity={0}
-                    overflow="hidden"
-                    position="absolute"
-                    z-index="-1"
-                  />
+                  <Image
+                    cursor="pointer"
+                    src="https://i.imgur.com/Ss8MqbE.png"
+                    height="75px"
+                  ></Image>
+                </Label>
+                <Input
+                  type="file"
+                  name="cargararchivo"
+                  id="cargararchivo"
+                  onChange={onChange}
+                  width="0.1px"
+                  height="0.1px"
+                  opacity={0}
+                  overflow="hidden"
+                  position="absolute"
+                  z-index="-1"
+                />
 
                 <Button type="submit" value="Upload" bg="transparent">
                   <Image width="150px" src="https://i.imgur.com/cWcllqB.png" />

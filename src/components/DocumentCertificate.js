@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Image,
 } from "@react-pdf/renderer";
-import QRCode from "react-qr-code";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -81,10 +80,10 @@ const styles = StyleSheet.create({
   },
   firmacontainer: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: "55px",
+    marginTop: "60px",
     marginBottom: "10px",
   },
   firma: {
@@ -94,6 +93,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderTop: "2px solid black",
+  },
+  firmatexto: {
+    width: "300px",
+    position: "absolute",
+    left: "260px",
+    bottom: "-45px",
   },
   textfirma: {
     color: "#0c0809",
@@ -110,7 +115,14 @@ const styles = StyleSheet.create({
 
 // Create Document Component
 const DocumentCertificate = (props) => {
-  const { image, nombre, representante, inscripcion } = props;
+  const {
+    image,
+    nombre,
+    representante,
+    inscripcion,
+    fechaverificado,
+    fechafinverificado,
+  } = props;
   console.log(nombre, representante, inscripcion);
   return (
     <Document>
@@ -149,12 +161,27 @@ const DocumentCertificate = (props) => {
           <Text style={styles.titlestext}>
             INSCRIPCIÓN: <Text style={styles.titlesubtext}>{inscripcion}</Text>
           </Text>
-          <Text style={styles.titlestext}>FECHA DE EMISIÓN:</Text>
-          <Text style={styles.titlestext}>FECHA DE VENCIMIENTO:</Text>
-          <Text style={styles.titlenote}>NOTA:</Text>
+          <Text style={styles.titlestext}>
+            FECHA DE EMISIÓN:{" "}
+            <Text style={styles.titlesubtext}>{fechaverificado}</Text>
+          </Text>
+          <Text style={styles.titlestext}>
+            FECHA DE VENCIMIENTO:{" "}
+            <Text style={styles.titlesubtext}>{fechafinverificado}</Text>
+          </Text>
+          <Text style={styles.titlenote}>
+            NOTA:{" "}
+            <Text style={styles.titlesubtext}>
+              Este Certificado debe estar visible al Público.
+            </Text>
+          </Text>
           <Image style={styles.qrstyle} src={{ uri: image }} />
         </View>
         <View style={styles.firmacontainer}>
+          <Image
+            style={styles.firmatexto}
+            src="https://i.imgur.com/tv3Qgvq.png"
+          />
           <View style={styles.firma}>
             <Text style={styles.textfirma}>M/G CARLOS OSORIO ZAMBRANO</Text>
             <Text style={styles.textfirma}>PRESIDENTE</Text>

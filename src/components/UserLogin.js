@@ -5,13 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/AuthContext";
 import { types } from "../types/types";
 import "../styles/UserLogin.css";
-import { slide as Menu } from 'react-burger-menu';
+import { slide as Menu } from "react-burger-menu";
 
 const URI = "/comapp/login";
 
 const UserLogin = () => {
-  const [isLessThan768] = useMediaQuery('(max-width: 768px)');
-  const [isLargerThan768] = useMediaQuery('(min-width: 769px)');
+  const [isLessThan768] = useMediaQuery("(max-width: 768px)");
+  const [isLargerThan768] = useMediaQuery("(min-width: 769px)");
   const [nombreusuario, setNombreUsuario] = useState("");
   const [contraseña, setContraseña] = useState("");
   const navigate = useNavigate();
@@ -55,38 +55,39 @@ const UserLogin = () => {
         <div className="gobierno-logo-container"></div>
         <div className="logo-app-container"></div>
         <Box h="100px" position="absolute" display="flex" width="100%">
-        {isLessThan768 && (
-            <Menu
+          {isLessThan768 && (
+            <Menu>
+              <Link to="/">
+                <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+              </Link>
+              <Link to="/contact">
+                <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+              </Link>
+              <Link to="/help">
+                <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+              </Link>
+            </Menu>
+          )}
+          {isLargerThan768 && (
+            <Stack
+              spacing={1}
+              direction={"row"}
+              p={2}
+              flex="1"
+              justify="flex-end"
+              width="100%"
             >
               <Link to="/">
-              <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
-            </Link>
-            <Link to="/contact">
-              <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
-            </Link>
-            <Link to="/help">
-              <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
-            </Link>
-            </Menu>
-            )} 
-            {isLargerThan768 && (<Stack
-            spacing={1}
-            direction={"row"}
-            p={2}
-            flex="1"
-            justify="flex-end"
-            width="100%"
-          >
-            <Link to="/home">
-              <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
-            </Link>
-            <Link to="/contact">
-              <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
-            </Link>
-            <Link to="/help">
-              <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
-            </Link>
-          </Stack>)}
+                <Image src="https://i.imgur.com/GKDwIhR.png" height="80px" />
+              </Link>
+              <Link to="/contact">
+                <Image src="https://i.imgur.com/ruTDdtu.png" height="80px" />
+              </Link>
+              <Link to="/help">
+                <Image src="https://i.imgur.com/LBmBrKC.png" height="80px" />
+              </Link>
+            </Stack>
+          )}
         </Box>
       </Box>
 
@@ -113,7 +114,11 @@ const UserLogin = () => {
             ></input>
           </div>
           <div className="forgot-password-container">
-              <Link to="/register"><h2 id="forgot-password-text">¿No posees una cuenta? Regístrate</h2></Link>
+            <Link to="/register">
+              <h2 id="forgot-password-text">
+                ¿No posees una cuenta? Regístrate
+              </h2>
+            </Link>
           </div>
           <button className="login-btn" type="submit">
             INICIAR SESIÓN
